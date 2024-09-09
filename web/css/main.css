@@ -282,8 +282,8 @@ h1, h2, h3, h4, h5, h6 {
     background: #4cd3e3;
     border: 1px solid transparent; }
     .genric-btn.success:hover {
-      color: #4cd3e3;
-      border: 1px solid #4cd3e3;
+      color: #ffba00;
+      border: 1px solid #ffba00;
       background: #fff; }
   .genric-btn.success-border {
     color: #4cd3e3;
@@ -298,12 +298,12 @@ h1, h2, h3, h4, h5, h6 {
     background: #38a4ff;
     border: 1px solid transparent; }
     .genric-btn.info:hover {
-      color: #38a4ff;
-      border: 1px solid #38a4ff;
+      color: #ffba00;
+      border: 1px solid #ffba00;
       background: #fff; }
   .genric-btn.info-border {
-    color: #38a4ff;
-    border: 1px solid #38a4ff;
+    color: #ffba00;
+    border: 1px solid #ffba00;
     background: #fff; }
     .genric-btn.info-border:hover {
       color: #fff;
@@ -1052,7 +1052,8 @@ h1, h2, h3, h4, h5, h6 {
         .header_area .navbar .nav .nav-item .nav-link:after {
           display: none; }
       .header_area .navbar .nav .nav-item:hover .nav-link, .header_area .navbar .nav .nav-item.active .nav-link {
-        color: #ffba00; }
+        color: #000000;
+      font-weight: bold;}
       .header_area .navbar .nav .nav-item.submenu {
         position: relative; }
         .header_area .navbar .nav .nav-item.submenu ul {
@@ -1061,7 +1062,7 @@ h1, h2, h3, h4, h5, h6 {
           border-radius: 0px;
           box-shadow: none;
           margin: 0px;
-          background: #fff; }
+          background: #ffba00; }
           @media (min-width: 992px) {
             .header_area .navbar .nav .nav-item.submenu ul {
               position: absolute;
@@ -1118,8 +1119,8 @@ h1, h2, h3, h4, h5, h6 {
             .header_area .navbar .nav .nav-item.submenu ul .nav-item:last-child {
               border-bottom: none; }
             .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
-              background: #ffba00;
-              color: #fff; }
+              background: #000;
+              color: #ffba00; }
         @media (min-width: 992px) {
           .header_area .navbar .nav .nav-item.submenu:hover ul {
             visibility: visible;

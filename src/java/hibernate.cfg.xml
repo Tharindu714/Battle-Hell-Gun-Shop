@@ -8,6 +8,27 @@
         <property name="hibernate.connection.password">tharinduCHA@8754</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.show_sql">true</property>
+        
+        <!--Entity Mapping-->
+        <mapping class = "entity.Action"/>
+        <mapping class = "entity.Address"/>
+        <mapping class = "entity.Barrel"/>
+        <mapping class = "entity.Brand"/>
+        <mapping class = "entity.Bullet_type"/>
+        <mapping class = "entity.Bullets"/>
+        <mapping class = "entity.Cart"/>
+        <mapping class = "entity.City"/>
+        <mapping class = "entity.Gun_condition"/>
+        <mapping class = "entity.Gun_status"/>
+        <mapping class = "entity.Model"/>
+        <mapping class = "entity.Person"/>
+        <mapping class = "entity.Product"/>
+        <mapping class = "entity.Purchase_Status"/>
+        <mapping class = "entity.Stock"/>
+        <mapping class = "entity.User"/>
+        <mapping class = "entity.Wishlist"/>
+        <!--Entity Mapping-->
+        
     </session-factory>
 </hibernate-configuration>
 

@@ -15,11 +15,8 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>Login Here</title>
+        <title>Sign Up</title>
 
-        <!--
-                CSS
-                ============================================= -->
         <link rel="stylesheet" href="css/linearicons.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/themify-icons.css">
@@ -36,10 +33,10 @@
             <div class="container">
                 <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
                     <div class="col-first">
-                        <h1>Login/Register</h1>
+                        <h1>Register New Member</h1>
                         <nav class="d-flex align-items-center">
                             <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                            <a href="category.html">Login/Register</a>
+                            <a href="category.html">Register</a>
                         </nav>
                     </div>
                 </div>
@@ -51,20 +48,17 @@
         <section class="login_box_area section_gap">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="login_box_img">
-                            <img class="img-fluid" src="img/login.jpg" alt="">
-                            <div class="hover">
-                                <h4>New to our website?</h4>
-                                <p>If You are new here Check our products and decide our level. Hope you never regret about your choice</p>
-                                <a class="primary-btn" href="registration.html">Create an Account</a>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-lg-6" style="background-color: #000000">
                         <div class="login_form_inner">
-                            <h3 class="text-light">Log in to enter</h3>
+                            <h3 class="text-light">Create New Account</h3>
                             <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter First Name'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Last Name'">
+                                </div>
                                 <div class="col-md-12 form-group">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Email Address'">
                                 </div>
@@ -72,16 +66,20 @@
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password Here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Your Password Here'">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <div class="creat_account">
-                                        <input type="checkbox" id="f-option2" name="selector">
-                                        <label for="f-option2">Keep me logged in</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 form-group">
-                                    <button type="submit" value="submit" class="primary-btn">Log In</button>
-                                    <a href="#">Forgot Password?</a>
+                                    <button type="button" class="primary-btn">Sign up</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="login_box_img">
+                            <img class="img-fluid" src="img/register.jpg" alt="">
+                            <div class="hover">
+                                <h4>Already a member?</h4>
+                                <p>We are the best island wide gun sellers who can provide you great stuff </p>
+                                <a class="primary-btn" href="login.html">Go to Login</a>
+                            </div>
                         </div>
                     </div>
                 </div>
