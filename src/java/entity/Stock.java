@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "stock")
@@ -16,14 +18,16 @@ public class Stock implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "w_trigger", length = 25, nullable = false)
+    @Column(name = "w_trigger", length = 45, nullable = false)
     private String w_trigger;
 
-    @Column(name = "magazine", length = 25, nullable = false)
-    private String magazine;
+    @ManyToOne
+    @JoinColumn(name = "forestock_id")
+    private Forestock forestock;
 
-    @Column(name = "forestock", length = 25, nullable = false)
-    private String forestock;
+    @ManyToOne
+    @JoinColumn(name = "magazine_id")
+    private Magazine magazine;
 
     public Stock() {
 
@@ -45,21 +49,20 @@ public class Stock implements Serializable{
         this.w_trigger = w_trigger;
     }
 
-    public String getMagazine() {
-        return magazine;
-    }
-
-    public void setMagazine(String magazine) {
-        this.magazine = magazine;
-    }
-
-    public String getForestock() {
+    public Forestock getForestock() {
         return forestock;
     }
 
-    public void setForestock(String forestock) {
+    public void setForestock(Forestock forestock) {
         this.forestock = forestock;
     }
 
-    
+    public Magazine getMagazine() {
+        return magazine;
+    }
+
+    public void setMagazine(Magazine magazine) {
+        this.magazine = magazine;
+    }
+  
 }

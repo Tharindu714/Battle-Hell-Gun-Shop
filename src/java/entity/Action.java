@@ -20,7 +20,7 @@ public class Action implements Serializable {
     @Column(name = "bolt", length = 25, nullable = false)
     private String bolt;
 
-    @Column(name = "safetyclip", length = 25, nullable = false)
+    @Column(name = "safetyclip", length = 45, nullable = false)
     private String safetyclip;
 
     public int getId() {

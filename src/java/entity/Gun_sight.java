@@ -9,19 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "person")
-public class Person implements Serializable {
+@Table(name = "gun_sights")
+public class Gun_sight implements Serializable {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "type", length = 20, nullable = false)
-    private String type;
-
-    public Person() {
-
+    @Column(name = "name", length = 45, nullable = false)
+    private String name;
+    
+    public Gun_sight(){
+        
     }
 
     public int getId() {
@@ -32,11 +32,11 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 }

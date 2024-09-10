@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entity;
 
 import java.io.Serializable;
@@ -10,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "barrel")
-public class Barrel implements Serializable{
+public class Barrel implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -24,11 +22,13 @@ public class Barrel implements Serializable{
     @Column(name = "chamber", length = 25, nullable = false)
     private String chamber;
 
-    @Column(name = "muzzle", length = 25, nullable = false)
-    private String muzzle;
+    @ManyToOne
+    @JoinColumn(name = "gun_sights_id")
+    private Gun_sight gun_sight;
 
-    @Column(name = "sight", length = 25, nullable = false)
-    private String sight;
+    @ManyToOne
+    @JoinColumn(name = "muzzle_id")
+    private Muzzle muzzle;
 
     public Barrel() {
 
@@ -50,19 +50,20 @@ public class Barrel implements Serializable{
         this.chamber = chamber;
     }
 
-    public String getMuzzle() {
+    public Gun_sight getGun_sight() {
+        return gun_sight;
+    }
+
+    public void setGun_sight(Gun_sight gun_sight) {
+        this.gun_sight = gun_sight;
+    }
+
+    public Muzzle getMuzzle() {
         return muzzle;
     }
 
-    public void setMuzzle(String muzzle) {
+    public void setMuzzle(Muzzle muzzle) {
         this.muzzle = muzzle;
     }
 
-    public String getSight() {
-        return sight;
-    }
-
-    public void setSight(String sight) {
-        this.sight = sight;
-    }
 }

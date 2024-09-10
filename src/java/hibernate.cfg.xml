@@ -27,6 +27,10 @@
         <mapping class = "entity.Stock"/>
         <mapping class = "entity.User"/>
         <mapping class = "entity.Wishlist"/>
+        <mapping class = "entity.Forestock"/>
+        <mapping class = "entity.Gun_sight"/>
+        <mapping class = "entity.Magazine"/>
+        <mapping class = "entity.Muzzle"/>
         <!--Entity Mapping-->
         
     </session-factory>
