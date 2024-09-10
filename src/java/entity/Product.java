@@ -55,12 +55,12 @@ public class Product {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "condition_id")
+    @JoinColumn(name = "gun_condition_id")
     private Gun_condition gun_condition;
 
     @ManyToOne
     @JoinColumn(name = "action_id")
-    private Action action;
+    private Gun_Action action;
 
     @ManyToOne
     @JoinColumn(name = "bullet_type_id")
@@ -170,11 +170,11 @@ public class Product {
         this.gun_condition = gun_condition;
     }
 
-    public Action getAction() {
+    public Gun_Action getAction() {
         return action;
     }
 
-    public void setAction(Action action) {
+    public void setAction(Gun_Action action) {
         this.action = action;
     }
 

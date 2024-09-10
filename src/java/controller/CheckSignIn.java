@@ -18,10 +18,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import model.HibernateUtil;
 
-/**
- *
- * @author ByteBigBoss
- */
 @WebServlet(name="CheckSignIn", urlPatterns={"/CheckSignIn"})
 public class CheckSignIn extends HttpServlet {
 

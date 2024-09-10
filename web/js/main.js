@@ -63,7 +63,7 @@ $(document).ready(function(){
     ==================================*/
     $(".active-product-area").owlCarousel({
         items:1,
-        autoplay:false,
+        autoplay:true,
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
@@ -76,7 +76,7 @@ $(document).ready(function(){
     ==================================*/
     $(".s_Product_carousel").owlCarousel({
       items:1,
-      autoplay:false,
+      autoplay:true,
       autoplayTimeout: 5000,
       loop:true,
       nav:false,
@@ -364,7 +364,7 @@ $(document).ready(function(){
           el: "#mapBox",
           lat: $lat,
           lng: $lon,
-          scrollwheel: false,
+          scrollwheel: true,
           scaleControl: true,
           streetViewControl: false,
           panControl: true,

@@ -8,9 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author Tharindu
+ */
 @Entity
-@Table(name = "action")
-public class Action implements Serializable {
+@Table(name = "gun_action")
+public class Gun_Action implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -22,6 +26,10 @@ public class Action implements Serializable {
 
     @Column(name = "safetyclip", length = 45, nullable = false)
     private String safetyclip;
+    
+    public Gun_Action(){
+        
+    }
 
     public int getId() {
         return id;

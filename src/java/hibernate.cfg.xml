@@ -10,7 +10,7 @@
         <property name="hibernate.show_sql">true</property>
         
         <!--Entity Mapping-->
-        <mapping class = "entity.Action"/>
+        <mapping class = "entity.Gun_Action"/>
         <mapping class = "entity.Address"/>
         <mapping class = "entity.Barrel"/>
         <mapping class = "entity.Brand"/>
