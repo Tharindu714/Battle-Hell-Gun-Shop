@@ -18,7 +18,7 @@ public class SignOut extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         req.getSession().invalidate();
-        res.sendRedirect("sign-in.html");
+        res.sendRedirect("login.html");
         
     }
 }

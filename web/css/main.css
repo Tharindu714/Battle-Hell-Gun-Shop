@@ -1568,7 +1568,7 @@ h1, h2, h3, h4, h5, h6 {
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         font-size: 12px;
-        color: #222222;
+        color: #ffffff;
         -webkit-transition: all 0.3s ease 0s;
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
@@ -3442,7 +3442,7 @@ label {
   border-radius: 50%; }
 
 .price-range-area {
-  padding: 30px 30px 0 30px; }
+  padding: 5px 5px 0 5px; }
   .price-range-area .noUi-target {
     background: #eee;
     border-radius: 0px;
@@ -3458,7 +3458,7 @@ label {
     width: 16px;
     height: 16px;
     left: -8px;
-    top: -5px;
+    top: 5px;
     border-radius: 50%;
     border: 0px;
     background: #ffba00;
@@ -3476,7 +3476,7 @@ label {
   .price-range-area .noUi-handle::after, .price-range-area .noUi-handle::before {
     display: none; }
   .price-range-area .value-wrapper {
-    margin-top: 20px;
+    margin-top: 5px;
     color: #cccccc; }
     .price-range-area .value-wrapper .to {
       margin: 0 5px; }

@@ -640,7 +640,7 @@
 	padding-bottom: 120px;
 	margin-top: 60px;
 	.nav.nav-tabs{
-		background: #e8f0f2;
+            background: #000000;
 		text-align: center;
 		display: block;
 		border: none;
@@ -670,7 +670,7 @@
 				}
 				&.active{
 					@extend .gradient-bg;
-					color: #fff;
+                                        color: #000000;
 					border: 1px solid transparent;
 				}
 			}

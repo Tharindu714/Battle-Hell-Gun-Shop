@@ -1,4 +1,6 @@
 var modelList;
+var stockList;
+var boreList;
 
 async function loadFeatures() {
 
@@ -9,9 +11,9 @@ async function loadFeatures() {
         const BrandList = json.BrandList; //BRAND LIST
         modelList = json.modelList; //MODEL LIST
         const magList = json.magList; //MAGAZINE LIST
-        const stockList = json.stockList; //STOCK LIST
+        stockList = json.stockList; //STOCK LIST
         const muzzList = json.muzzList; //MUZZLE TYPE LIST
-        const boreList = json.boreList; //BARREL TYPE LIST
+        boreList = json.boreList; //BARREL TYPE LIST
         const actionList = json.actionList; //ACTION LIST
         const btypeList = json.btypeList; //BULLET TYPE LIST
         const conditionList = json.conditionList; //CONDITION LIST
@@ -21,9 +23,9 @@ async function loadFeatures() {
         loadSelect("categorySelect", BrandList, ["id", "name"]);
         //loadSelect("modelSelect", modelList, ["id", "name"]);
         loadSelect("magSelect", magList, ["id", "name"]);
-        loadSelect("stockSelect", stockList, ["id", "w_trigger"]);
+        //loadSelect("stockSelect", stockList, ["id", "w_trigger"]);
         loadSelect("muzzSelect", muzzList, ["id", "name"]);
-        loadSelect("barrelSelect", boreList, ["id", "chamber"]);
+        //loadSelect("barrelSelect", boreList, ["id", "chamber"]);
         loadSelect("actionSelect", actionList, ["id", "bolt"]);
         loadSelect("btypeSelect", btypeList, ["id", "type"]);
         loadSelect("conditionSelect", conditionList, ["id", "name"]);
@@ -61,6 +63,38 @@ function updateModels() {
             tag.value = model.id;
             tag.innerHTML = model.name;
             modelTag.appendChild(tag);
+        }
+    });
+}
+
+function updateStock() {
+
+    let stockTag = document.getElementById("stockSelect");
+    let selectedstockId = document.getElementById("magSelect").value;
+    stockTag.length = 1; //REMOVE ALL VALUES AND KEEP ONLY 1st VALUE
+
+    stockList.forEach(stock => {
+        if (stock.magazine.id == selectedstockId) { //ADD MODELS IN SELECTED CATEGORY
+            let tag = document.createElement("option");
+            tag.value = stock.id;
+            tag.innerHTML = stock.w_trigger;
+            stockTag.appendChild(tag);
+        }
+    });
+}
+
+function updateBore() {
+
+    let boreTag = document.getElementById("barrelSelect");
+    let selectedboreId = document.getElementById("muzzSelect").value;
+    boreTag.length = 1; //REMOVE ALL VALUES AND KEEP ONLY 1st VALUE
+
+    boreList.forEach(barrel => {
+        if (barrel.muzzle.id == selectedboreId) { //ADD MODELS IN SELECTED CATEGORY
+            let tag = document.createElement("option");
+            tag.value = barrel.id;
+            tag.innerHTML = barrel.chamber;
+            boreTag.appendChild(tag);
         }
     });
 }
@@ -153,10 +187,10 @@ async function productListing() {
             modelSelectTag.length = 1;
 
             magSelectTag.value = 0;
-            stockSelectTag.value = 0;
+            stockSelectTag.value = 1;
 
             muzzSelectTag.value = 0;
-            barrelSelectTag.value = 0;
+            barrelSelectTag.value = 1;
 
             actionSelectTag.value = 0;
             btypeSelectTag.value = 0;
