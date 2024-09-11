@@ -4,7 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Smart Trade</title>
+        <title>Checkout Process</title>
+        <link rel="shortcut icon" href="img/fav.png">
         <meta name="robots" content="noindex, follow" />
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,6 +14,15 @@
 
         <!-- CSS
         ============================================ -->
+
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nice-select.css">
+        <link rel="stylesheet" href="css/nouislider.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
@@ -31,12 +41,25 @@
     </head>
 
 
-    <body class="sticky-header" onload="loadData();">
-        <!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-        <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
+    <body class="sticky-header bg-dark" onload="loadData();">
 
+        <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
+        <!-- Start Banner Area -->
+        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/checkout-banner.jpg) center no-repeat;">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
+                    <div class="col-first">
+                        <h1>Checkout Process</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="cart.html">Cart Page<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="#">Checkout</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
         <main class="main-wrapper">
 
             <!-- Start Checkout Area  -->
@@ -46,58 +69,58 @@
                         <div class="row">
                             <div class="col-lg-6">
 
-                                <div class="axil-checkout-billing">
-                                    <h4 class="title mb--40">Shipping Details</h4>
+                                <div class="axil-checkout-billing bg-dark">
+                                    <h4 class="title mb--40 text-light">Shipping Details</h4>
 
                                     <div class="form-group input-group">
                                         <input type="checkbox" id="checkbox1">
-                                        <label for="checkbox1">Same as your current address?</label>
+                                        <label for="checkbox1" class="bg-dark text-danger">Same as your current address?</label>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>First Name <span>*</span></label>
-                                                <input type="text" id="first-name" >
+                                                <label class="bg-dark rounded-bottom-2">First Name <span>*</span></label>
+                                                <input type="text" id="first-name" class="bg-black" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
-                                                <label>Last Name <span>*</span></label>
-                                                <input type="text" id="last-name" >
+                                                <label class="bg-dark rounded-bottom-2">Last Name <span>*</span></label>
+                                                <input type="text" id="last-name" class="bg-black">
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>City <span>*</span></label>
+                                        <label class="bg-dark rounded-bottom-2">City <span>*</span></label>
                                         <select id="city">
                                             <option value="0">Select</option>
 
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address Line 1 <span>*</span></label>
-                                        <input type="text" id="address1" class="mb--15" placeholder="House number and street name">
+                                        <label class="bg-dark rounded-bottom-2">Address Line 1 <span>*</span></label>
+                                        <input type="text" id="address1" class="mb--15 bg-black" placeholder="House number and street name">
                                     </div>
                                     <div class="form-group">
-                                        <label>Address Line 2 <span>*</span></label>
-                                        <input type="text" id="address2" class="mb--15" placeholder="House number and street name">
+                                        <label class="bg-dark rounded-bottom-2">Address Line 2 <span>*</span></label>
+                                        <input type="text" id="address2" class="mb--15 bg-black" placeholder="House number and street name">
                                     </div>
                                     <div class="form-group">
-                                        <label>Postal Code <span>*</span></label>
-                                        <input type="text" id="postal-code">
+                                        <label class="bg-dark rounded-bottom-2">Postal Code <span>*</span></label>
+                                        <input type="text" id="postal-code" class="bg-black">
                                     </div>
                                     <div class="form-group">
-                                        <label>Mobile <span>*</span></label>
-                                        <input type="text" id="mobile">
+                                        <label class="bg-dark rounded-bottom-2">Mobile <span>*</span></label>
+                                        <input type="text" id="mobile" class="bg-black">
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="axil-order-summery order-checkout-summery">
-                                    <h5 class="title mb--20">Your Order</h5>
+                            <div class="col-lg-6 ">
+                                <div class="axil-order-summery order-checkout-summery bg-dark">
+                                    <h5 class="title mb--20 text-light">Your Order</h5>
                                     <div class="summery-table-wrap">
                                         <table class="table summery-table">
                                             <thead>
@@ -139,7 +162,7 @@
                                         <div class="single-payment">
                                             <div class="input-group justify-content-between align-items-center">
                                                 <input type="radio" id="radio6" name="payment" checked>
-                                                <label for="radio6">Visa/Master Card</label>
+                                                <label for="radio6" class="text-light">Visa/Master Card</label>
                                                 <div>
                                                     <!--images-->
                                                 </div>
@@ -147,7 +170,7 @@
                                             <p>You can pay with your credit or debit card.</p>
                                         </div>
                                     </div>
-                                    <button type="button" class="axil-btn btn-bg-primary checkout-btn" onclick="checkout();" >Process to Checkout</button>
+                                    <button type="button" class="primary-btn" onclick="checkout();" >Process to Checkout</button>
                                 </div>
                             </div>
                         </div>
@@ -158,7 +181,7 @@
         </main>
 
 
-        //payhere cdn link
+<!--        payhere cdn link-->
         <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
         <!-- Modernizer JS -->
@@ -184,7 +207,7 @@
         <!-- Main JS -->
         <script src="assets/js/main.js"></script>
         <script src="js/checkout.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 
 </html>

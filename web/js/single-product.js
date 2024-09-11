@@ -26,6 +26,7 @@ async function loadProduct() {
 
 
             document.getElementById("product-title").innerHTML = json.product.title;
+            document.getElementById("product-title1").innerHTML = json.product.title;
             document.getElementById("product-published-on").innerHTML = json.product.reg_date;
             document.getElementById("product-price").innerHTML = new Intl.NumberFormat(
                     "en-US",

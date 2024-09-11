@@ -1,4 +1,3 @@
-const popup = Notification();
 
 // Payment completed. It can be a successful failure.
 payhere.onCompleted = function onCompleted(orderId) {
@@ -167,7 +166,7 @@ async function loadData() {
             citySelect.dispatchEvent(new Event("change"));
 
         } else {
-            window.location = "sign-in.html";
+            window.location = "login.html";
         }
 
     }
@@ -188,7 +187,7 @@ async function checkout() {
     let postalCode = document.getElementById("postal-code");
     let mobile = document.getElementById("mobile");
 
-    //request data (json)
+
     const data = {
         isCurrentAddress: isCurrentAddress,
         firstName: firstName.value,
@@ -213,18 +212,29 @@ async function checkout() {
         console.log(json);
 
         if (json.success) {
-
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: json.content,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            
             console.log(json.payhereJson);
             payhere.startPayment(json.payhereJson);
         } else {
-            popup.error({
-                message: json.message
+            Swal.fire({
+                title: "Something went Wrong",
+                text: json.content,
+                icon: "error"
             });
         }
 
     } else {
-        popup.error({
-            message: "Please try again later"
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
         });
     }
 

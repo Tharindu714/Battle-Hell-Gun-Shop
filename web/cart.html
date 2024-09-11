@@ -15,7 +15,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>Your Cart</title>
+        <title>Your Cart Page</title>
 
         <!--
                 CSS
@@ -46,7 +46,7 @@
     <body class="bg-dark" onload="loadCartItems();">
 
         <!-- Start Banner Area -->
-        <section class="banner-area organic-breadcrumb">
+        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/cart-banner.jpg) center no-repeat;">
             <div class="container">
                 <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
                     <div class="col-first">
@@ -86,12 +86,12 @@
                                 <tbody id="cart-item-container">
                                     <tr id="cart-item-row">
                                         <td class="product-remove bg-dark"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                        <td class="product-thumbnail bg-secondary-subtle"><a href="#" id="cart-item-a"><img src="./assets/images/product/product-01.png" id="cart-item-img" alt="Product"></a></td>
-                                        <td class="product-title bg-dark-subtle"><a href="#" id="cart-item-title">Title</a></td>
-                                        <td class="product-price bg-secondary-subtle" data-title="Price"><span class="currency-symbol fw-bold">$ </span> <span id="cart-item-price" class="text-black">1000</span></td>
+                                        <td class="product-thumbnail bg-secondary-subtle"><a href="#" id="cart-item-a"><img id="cart-item-img"></a></td>
+                                        <td class="product-title bg-dark-subtle"><a href="#" id="cart-item-title"></a></td>
+                                        <td class="product-price bg-secondary-subtle" data-title="Price"><span class="currency-symbol fw-bold">$ </span> <span id="cart-item-price" class="text-black"></span></td>
                                         <td class="product-quantity bg-dark-subtle" data-title="Qty">
                                             <div class="product_count">
-                                                <input type="text" name="cart-item-qty" id="cart-item-qty" maxlength="12" value="1" title="Quantity:"
+                                                <input type="text" name="cart-item-qty" id="cart-item-qty" maxlength="12" value="0" title="Quantity:"
                                                        class="input-text qty">
                                                 <button onclick="var result = document.getElementById('');
                                                         var sst = result.value;

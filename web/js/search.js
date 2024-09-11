@@ -27,27 +27,27 @@ function loadOption(prefix, dataList, property) {
     let options = document.getElementById(prefix + "-options");
     let li = document.getElementById(prefix + "-li");
     
-//    dataList.forEach(data => {
-//        let li_clone = li.cloneNode(true);
-//            li_clone.querySelector("#" + prefix + "-a-").innerHTML = data[property];
-//        options.appendChild(li_clone);
-//    });
-//
+    dataList.forEach(data => {
+        let li_clone = li.cloneNode(true);
+            li_clone.querySelectorAll("#" + prefix + "a").innerHTML = data[property];
+        options.appendChild(li_clone);
+    });
+
      
-//    const all_li = document.querySelectorAll("#" + prefix + "-options li");
-//    all_li.forEach(x => {
-//        x.addEventListener('click', function () {
-//            all_li.forEach(y => y.classList.remove('chosen'));
-//            this.classList.add('chosen');
-//        });
-//    });
+    const all_li = document.querySelectorAll("#" + prefix + "-options li");
+    all_li.forEach(x => {
+        x.addEventListener('click', function () {
+            all_li.forEach(y => y.classList.remove('chosen'));
+            this.classList.add('chosen');
+        });
+    });
 }
 
 async function searchProducts(firstResult) {
 
     //get search data
     let Brand_name = document.getElementById("category-options")
-            .querySelector(".chosen")?.querySelector("a").innerHTML;
+            .querySelectorAll(".chosen")?.querySelector("a").innerHTML;
 
     let action = document.getElementById("action-options")
             .querySelector(".chosen")?.querySelector("a").innerHTML;
