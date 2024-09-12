@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ByteBigBoss
  */
-@WebFilter(filterName = "FilterSignInCheck", urlPatterns = {"/register-products.html"})
+@WebFilter(filterName = "FilterSignInCheck", urlPatterns = {"/register-products.html","/Profile.html"})
 public class FilterSignInCheck implements Filter {
 
     @Override

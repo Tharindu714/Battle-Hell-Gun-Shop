@@ -12,14 +12,21 @@ async function checkSignIn() {
 //SIGNED IN
             const user = response_dto.content;
             console.log(user);
+            
             let st_quick_link = document.getElementById("st-quick-link");
+            
             let st_quick_link_li_1 = document.getElementById("st-quick-link-li-1");
             st_quick_link_li_1.remove();
+            
             let st_quick_link_li_2 = document.getElementById("st-quick-link-li-2");
             st_quick_link_li_2.remove();
+            
             let new_li_tag1 = document.createElement("li");
             new_li_tag1.innerHTML = user.first_name + " " + user.last_name;
+            new_li_tag1.href = "Profile.html";
+            
             st_quick_link.appendChild(new_li_tag1);
+            
             let st_btn_1 = document.getElementById("st-btn-1");
             st_btn_1.href = "SignOut";
             st_btn_1.innerHTML = "SignOut";
