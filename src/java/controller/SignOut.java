@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author ByteBigBoss
- */
 @WebServlet(name="SignOut", urlPatterns={"/SignOut"})
 public class SignOut extends HttpServlet {
 

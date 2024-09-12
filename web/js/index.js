@@ -3,38 +3,28 @@ async function checkSignIn() {
     const response = await fetch(
             "CheckSignIn"
             );
-
     if (response.ok) {
 
         const json = await response.json();
         console.log(json);
-
-
         const response_dto = json.response_dto;
-
         if (response_dto.success) {
-            //SIGNED IN
+//SIGNED IN
             const user = response_dto.content;
             console.log(user);
-
             let st_quick_link = document.getElementById("st-quick-link");
-
             let st_quick_link_li_1 = document.getElementById("st-quick-link-li-1");
             st_quick_link_li_1.remove();
-
             let st_quick_link_li_2 = document.getElementById("st-quick-link-li-2");
             st_quick_link_li_2.remove();
-
             let new_li_tag1 = document.createElement("li");
             new_li_tag1.innerHTML = user.first_name + " " + user.last_name;
             st_quick_link.appendChild(new_li_tag1);
-
             let st_btn_1 = document.getElementById("st-btn-1");
             st_btn_1.href = "SignOut";
             st_btn_1.innerHTML = "SignOut";
-
         } else {
-            //NOT SIGNED IN 
+//NOT SIGNED IN 
             console.log("Not Signed In");
         }
 
@@ -52,14 +42,38 @@ async function checkSignIn() {
                     }
             ).format(product.price);
             i++;
-            document.getElementById("home-add-to-cart")
-                    .addEventListener(
-                            "click",
-                            (e) => {
-
-                        addToCart(product.id, 1);
-                        e.preventDefault();
-                    });
+            document.getElementById("home-add-to-cart-1").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-2").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-3").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-4").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-5").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-6").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-7").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-8").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
         });
     }
 }
@@ -69,7 +83,6 @@ async function addToCart(id, qty) {
     const response = await fetch(
             "AddToCart?id=" + id + "&qty=" + qty
             );
-
     if (response.ok) {
 
         const json = await response.json();
@@ -81,7 +94,6 @@ async function addToCart(id, qty) {
                 showConfirmButton: false,
                 timer: 1500
             });
-
         } else {
             Swal.fire({
                 title: "Something went Wrong",
