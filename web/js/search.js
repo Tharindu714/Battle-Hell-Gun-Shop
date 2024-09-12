@@ -22,19 +22,18 @@ async function loadData() {
     }
 
 }
-
 function loadOption(prefix, dataList, property) {
     let options = document.getElementById(prefix + "-options");
     let li = document.getElementById(prefix + "-li");
     
     dataList.forEach(data => {
         let li_clone = li.cloneNode(true);
-            li_clone.querySelectorAll("#" + prefix + "a").innerHTML = data[property];
+//            li_clone.querySelector("#" + prefix + "a").innerHTML = data[property[1]];
         options.appendChild(li_clone);
     });
 
      
-    const all_li = document.querySelectorAll("#" + prefix + "-options li");
+    const all_li = document.querySelector("#" + prefix + "-options li");
     all_li.forEach(x => {
         x.addEventListener('click', function () {
             all_li.forEach(y => y.classList.remove('chosen'));
@@ -42,7 +41,6 @@ function loadOption(prefix, dataList, property) {
         });
     });
 }
-
 async function searchProducts(firstResult) {
 
     //get search data

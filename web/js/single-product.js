@@ -82,7 +82,7 @@ async function loadProduct() {
                 //CLONE
                 productCloneHtml.querySelector("#similer-product-img").src = "product-images/" + item.id + "/image1.png";
                 productCloneHtml.querySelector("#similer-product-a1").href = "single-product.html?id=" + item.id;
-                productCloneHtml.querySelector("#similer-product-a2").href = "single-product.html?id=" + item.id;
+//                productCloneHtml.querySelector("#similer-product-a2").href = "single-product.html?id=" + item.id;
                 productCloneHtml.querySelector("#similer-product-title").innerHTML = item.title;
                 productCloneHtml.querySelector("#similer-product-person").innerHTML = item.person.type;
                 productCloneHtml.querySelector("#similer-product-price").innerHTML = "Rs. " + new Intl.NumberFormat(

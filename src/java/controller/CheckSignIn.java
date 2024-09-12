@@ -46,12 +46,10 @@ public class CheckSignIn extends HttpServlet {
         
         jsonObject.add("response_dto", gson.toJsonTree(resDTO));
         
-        //GET LAST 3 PRODUCTS
+       
         Criteria criteria1 = session.createCriteria(Product.class);
         criteria1.addOrder(Order.desc("id"));
-        criteria1.setMaxResults(3);
         List<Product> productList = criteria1.list();
-        
         for (Product product : productList) {
             product.setUser(null);
         }

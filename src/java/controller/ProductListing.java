@@ -35,10 +35,6 @@ import org.hibernate.criterion.Restrictions;
 import model.HibernateUtil;
 import model.Validator;
 
-/**
- *
- * @author ByteBigBoss
- */
 @MultipartConfig
 @WebServlet(name = "ProductListing", urlPatterns = {"/ProductListing"})
 public class ProductListing extends HttpServlet {
@@ -285,7 +281,7 @@ public class ProductListing extends HttpServlet {
                                                         String newAplicationPath = applicationPath.replace("build" + File.separator + "web", "web");
 
                                                         //PRODUCT FOLDER
-                                                        File productFolder = new File(newAplicationPath, "//product-images//" + pid);
+                                                        File productFolder = new File(newAplicationPath + File.separator + "product-images" + File.separator + pid);
                                                         productFolder.mkdir();
 
                                                         //FILE 1

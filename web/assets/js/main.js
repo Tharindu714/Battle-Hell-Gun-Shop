@@ -22,7 +22,7 @@
             axilInit.mobileMenuActivation();
             axilInit.menuLinkActive();
             axilInit.headerIconToggle();
-            axilInit.priceRangeSlider();
+//            axilInit.priceRangeSlider();
             axilInit.quantityRanger();
             axilInit.axilSlickActivation();
             axilInit.countdownInit('.coming-countdown', '2024/10/10');
@@ -201,20 +201,20 @@
             })
         },
 
-        priceRangeSlider: function(e) {
-            $('#slider-range').slider({
-                range: true,
-                min: 0,
-                max: 5000,
-                values: [0, 3000],
-                slide: function(event, ui) {
-                    $('#amount').val('$' + ui.values[0] + '  $' + ui.values[1]);
-                }
-            });
-            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
-                '  $' + $('#slider-range').slider('values', 1));
-
-        },
+//        priceRangeSlider: function(e) {
+//            $('#slider-range').slider({
+//                range: true,
+//                min: 0,
+//                max: 5000,
+//                values: [0, 3000],
+//                slide: function(event, ui) {
+//                    $('#amount').val('$' + ui.values[0] + '  $' + ui.values[1]);
+//                }
+//            });
+//            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
+//                '  $' + $('#slider-range').slider('values', 1));
+//
+//        },
 
         quantityRanger: function() {
             $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');

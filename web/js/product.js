@@ -184,13 +184,13 @@ async function productListing() {
             qtyTag.value = 1;
 
             categorySelectTag.value = 0;
-            modelSelectTag.length = 1;
+            modelSelectTag.length = 0;
 
             magSelectTag.value = 0;
-            stockSelectTag.value = 1;
+            stockSelectTag.value = 0;
 
             muzzSelectTag.value = 0;
-            barrelSelectTag.value = 1;
+            barrelSelectTag.value = 0;
 
             actionSelectTag.value = 0;
             btypeSelectTag.value = 0;
