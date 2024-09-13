@@ -41,11 +41,11 @@
     </head>
 
 
-    <body class="sticky-header bg-dark" onload="loadData();">
+    <body class="sticky-header bg-dark" onload="loadProfileData();">
 
         <a href="#top" class="back-to-top" id="backto-top"><i class="fal fa-arrow-up"></i></a>
         <!-- Start Banner Area -->
-        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/checkout-banner.jpg) center no-repeat;">
+        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/profile-banner.jpg) center no-repeat;">
             <div class="container">
                 <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
                     <div class="col-first">
@@ -73,7 +73,7 @@
                                         <h4>Done Updating Profile ?</h4>
                                         <p>Click Above button to submit your Details</p>
                                         <a href="#" class="primary-btn">
-                                            <button type="button" class="primary-btn" onclick="">Submit Details</button>
+                                            <button type="button" class="primary-btn" onclick="SubmitProfile();">Submit Details</button>
                                         </a>
                                     </div>
                                 </div>
@@ -82,30 +82,12 @@
                                 <div class="axil-checkout-billing bg-dark">
                                     <h4 class="title mb--40 text-light">Update Profile</h4>
 
-                                    <div class="form-group input-group">
-                                        <input type="checkbox" id="profile-checkbox1">
-                                        <label for="profile-checkbox1" class="bg-dark text-warning">Load Existing Details</label>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="bg-dark rounded-bottom-2">First Name</label>
-                                                <input type="text" id="profile-first-name" class="bg-black text-light" placeholder="Enter Your First Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label class="bg-dark rounded-bottom-2">Last Name</label>
-                                                <input type="text" id="profile-last-name" class="bg-black text-light" placeholder="Enter Your Last Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label class="bg-dark rounded-bottom-2">Email Address</label>
-                                                <input type="text" id="profile-email" class="bg-black text-light" placeholder="Enter Your Email Address">
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+                                        <ul class="" id="user-detail-input">
+                                            <li id="profile-first-name"><a class="nav-link"></a></li>
+                                            <li id="profile-last-name"><a class="nav-link" ></a></li>
+                                            <li id="profile-email"><a class="nav-link" ></a></li>
+                                        </ul>
                                     </div>
 
                                     <div class="form-group">
@@ -215,6 +197,7 @@
 
         <!-- Main JS -->
         <script src="assets/js/main.js"></script>
+        <script src="js/address.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 

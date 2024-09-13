@@ -12,24 +12,30 @@ async function checkSignIn() {
 //SIGNED IN
             const user = response_dto.content;
             console.log(user);
-            
+
             let st_quick_link = document.getElementById("st-quick-link");
-            
+
             let st_quick_link_li_1 = document.getElementById("st-quick-link-li-1");
             st_quick_link_li_1.remove();
-            
+
             let st_quick_link_li_2 = document.getElementById("st-quick-link-li-2");
             st_quick_link_li_2.remove();
-            
-            let new_li_tag1 = document.createElement("li");
-            new_li_tag1.innerHTML = user.first_name + " " + user.last_name;
-            new_li_tag1.href = "Profile.html";
-            
-            st_quick_link.appendChild(new_li_tag1);
-            
+
+
             let st_btn_1 = document.getElementById("st-btn-1");
             st_btn_1.href = "SignOut";
             st_btn_1.innerHTML = "SignOut";
+
+            let st_btn_2 = document.getElementById("st-btn-2");
+            st_btn_2.innerHTML = user.first_name + "'s Profile";
+            st_btn_2.href = "Profile.html";
+
+            let st_btn_3 = document.getElementById("st-btn-3");
+            st_btn_3.remove();
+
+            let st_btn_4 = document.getElementById("st-btn-4");
+            st_btn_4.innerHTML = "Join Us";
+            st_btn_4.href = "registration.html";
         } else {
 //NOT SIGNED IN 
             console.log("Not Signed In");
@@ -78,6 +84,22 @@ async function checkSignIn() {
                 e.preventDefault();
             });
             document.getElementById("home-add-to-cart-8").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-9").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-10").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-11").addEventListener("click", (e) => {
+                addToCart(product.id, 1);
+                e.preventDefault();
+            });
+            document.getElementById("home-add-to-cart-12").addEventListener("click", (e) => {
                 addToCart(product.id, 1);
                 e.preventDefault();
             });
