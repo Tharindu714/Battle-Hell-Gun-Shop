@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Advance Search Process</title>
+        <meta name="robots" content="noindex, follow" />
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="img/fav.png">
+
+
+        <link rel="stylesheet" href="css/linearicons.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/nouislider.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
+        <link rel="stylesheet" href="assets/css/vendor/flaticon/flaticon.css">
+        <link rel="stylesheet" href="assets/css/vendor/slick.css">
+        <link rel="stylesheet" href="assets/css/vendor/slick-theme.css">
+        <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+        <link rel="stylesheet" href="assets/css/vendor/sal.css">
+        <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/vendor/base.css">
+        <link rel="stylesheet" href="assets/css/style.min.css">
+
+
+    </head>
+
+    <section class="banner-area organic-breadcrumb" style="background: url(img/banner/singleproduct-banner.jpg) center no-repeat;">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
+                <div class="col-first">
+                    <h1>Advance Search View</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Advance Search</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <body class="sticky-header bg-dark" onload="loadData();">
+        <main class="main-wrapper">
+            <!-- Start Shop Area  -->
+            <div class="axil-shop-area axil-section-gap bg-color-black">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="axil-shop-sidebar">
+                                <div class="d-lg-none">
+                                    <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="toggle-list product-categories">
+                                    <h6 class="title text-warning">Company Brands</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="category-options">
+                                            <!--<li class="current-cat"><a href="#">Apple</a></li>-->
+                                            <li id="category-li"><a id="category-a" class="text-light">Please Wait.......</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="toggle-list product-categories product-gender">
+                                    <h6 class="title text-warning">Usage Condition</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="condition-options">
+                                            <li id="condition-li"><a id="condition-a" class="text-light">Please Wait.......</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="toggle-list product-categories product-gender">
+                                    <h6 class="title text-warning">Weapon Action</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="action-options">
+                                            <li id="action-li"><a id="action-a" class="text-light">Please Wait.......</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="toggle-list product-categories product-gender">
+                                    <h6 class="title text-warning">Weapon Chamber</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="barrel-options">
+                                            <li id="barrel-li"><a id="barrel-a" class="text-light">Please Wait.......</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="toggle-list product-categories product-gender">
+                                    <h6 class="title text-warning">Weapon Stock</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="stock-options">
+                                            <li id="stock-li"><a id="stock-a" class="text-light">Please Wait.......</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="toggle-list product-categories product-gender">
+                                    <h6 class="title text-warning">Special For</h6>
+                                    <div class="shop-submenu">
+                                        <ul id="person-options">
+                                            <li id="person-li"><a id="person-a" class="text-light">Please Wait.......</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="toggle-list product-price-range active">
+                                    <h6 class="title">PRICE</h6>
+                                    <div class="shop-submenu">
+                                        <form action="#" class="mt--25">
+                                            <div id="slider-range"></div>
+                                            <div class="flex-center mt--20">
+                                                <input type="text" id="amount" class="amount-range text-light bg-dark" readonly>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <button class="primary-btn" onclick="searchProducts(0);">Apply</button>
+                                <button class="btn bg-transparent mt--10 text-light fs-3 text-uppercase" onclick="reload()">Reset All</button>
+                            </div>
+                            <!-- End .axil-shop-sidebar -->
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="axil-shop-top mb--40">
+                                        <div class="category-select align-items-center justify-content-lg-end justify-content-between">
+                                            <!-- Start Single Select  -->
+                                            <span class="filter-results  text-light">Showing 1-10 of 20 results</span>
+                                            <select class="single-select text-light" id="st-sort">
+                                                <option class="bg-dark text-light">Sort by Latest</option>
+                                                <option class="bg-dark text-light">Sort by Oldest</option>
+                                                <option class="bg-dark text-light">Sort by Name</option>
+                                                <option class="bg-dark text-light">Sort by Price</option>
+                                            </select>
+                                            <!-- End Single Select  -->
+                                        </div>
+                                        <div class="d-lg-none">
+                                            <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i> FILTER</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End .row -->
+
+                            <div class="row row--15" id="st-product-container">
+                                <div class="col-xl-4 col-sm-6" id="st-product">
+                                    <div class="axil-product product-style-one mb--30">
+                                        <div class="thumbnail">
+                                            <a href="single-product.html" id="st-product-a-1">
+                                                <img id="st-product-img-1" src="img/pleasewait.png">
+                                            </a>
+
+                                            <div class="product-hover-action">
+                                                <ul class="cart-action">
+                                                    <li class="wishlist"><a href="#"><i class="far fa-heart"></i></a></li>
+                                                    <li class="select-option primary-btn"><a href="#" class="primary-btn">Take it</a></li>
+                                                    <li class="quickview"><a href="#" id="st-product-a-2"><i class="far fa-eye"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="inner">
+                                                <h5 class="title text-light"><a href="#" id="st-product-title-1">Please Wait..........</a></h5>
+                                                <div class="product-price-variant">
+                                                    <span class="price current-price text-light">$ <span id="st-product-price-1" class="text-warning"></span> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Product  -->
+                            </div>
+
+                            <div class="text-center pt--20" id="st-pagination-container">
+                                <a class="primary-btn text-light me-4" id="st-pagination-button">Prev</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End .container -->
+            </div>
+            <!-- End Shop Area  -->
+
+
+        </main>
+
+        <!-- JS
+    ============================================ -->
+        <!-- Modernizer JS -->
+        <script src="assets/js/vendor/modernizr.min.js"></script>
+        <!-- jQuery JS -->
+        <script src="assets/js/vendor/jquery.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="assets/js/vendor/popper.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script>
+        <script src="assets/js/vendor/slick.min.js"></script>
+        <script src="assets/js/vendor/js.cookie.js"></script>
+        <!-- <script src="assets/js/vendor/jquery.style.switcher.js"></script> -->
+        <script src="assets/js/vendor/jquery-ui.min.js"></script>
+        <script src="assets/js/vendor/jquery.ui.touch-punch.min.js"></script>
+        <script src="assets/js/vendor/jquery.countdown.min.js"></script>
+        <script src="assets/js/vendor/sal.js"></script>
+        <script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+        <script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+        <script src="assets/js/vendor/counterup.js"></script>
+        <script src="assets/js/vendor/waypoints.min.js"></script>
+
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+        <script src="js/search.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    </body>
+
+</html>

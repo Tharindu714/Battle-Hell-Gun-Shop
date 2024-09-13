@@ -5,11 +5,13 @@ import com.google.gson.JsonObject;
 import entity.Barrel;
 import entity.Brand;
 import entity.Gun_Action;
-import entity.Gun_condition;
+
 import entity.Model;
-import entity.Person;
 import entity.Product;
+import entity.Gun_condition;
+import entity.Person;
 import entity.Stock;
+
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -30,83 +32,97 @@ public class SearchProducts extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Gson gson = new Gson();
+
         JsonObject responseJsonObject = new JsonObject();
         responseJsonObject.addProperty("success", false);
+
         //get request json
         JsonObject requestJsonObject = gson.fromJson(request.getReader(), JsonObject.class);
+
         Session session = HibernateUtil.getSessionFactory().openSession();
+
         //search all products
         Criteria criteria1 = session.createCriteria(Product.class);
 
         //add category filter
-        if (requestJsonObject.has("Brand_name")) {
+        if (requestJsonObject.has("category_name")) {
             //category selected
-            String BrandName = requestJsonObject.get("Brand_name").getAsString();
+            String categoryName = requestJsonObject.get("category_name").getAsString();
 
-            //get Brand list from Db
+            //get category list from Db
             Criteria criteria2 = session.createCriteria(Brand.class);
-            criteria2.add(Restrictions.eq("name", BrandName));
-            List<Brand> brandList = criteria2.list();
+            criteria2.add(Restrictions.eq("name", categoryName));
+            List<Brand> categoryList = criteria2.list();
 
             //get models by category from DB
             Criteria criteria3 = session.createCriteria(Model.class);
-            criteria3.add(Restrictions.in("brand", brandList));
+            criteria3.add(Restrictions.in("brand", categoryList));
             List<Model> modelList = criteria3.list();
 
-            //filter products by model list from DB
             criteria1.add(Restrictions.in("model", modelList));
         }
 
-        if (requestJsonObject.has("action")) {
-            String action = requestJsonObject.get("action").getAsString();
-
-            Criteria criteria4 = session.createCriteria(Gun_Action.class);
-            criteria4.add(Restrictions.eq("bolt", action));
-            Gun_Action gunAction = (Gun_Action) criteria4.uniqueResult();
-
-            criteria1.add(Restrictions.eq("gun_action", gunAction));
-        }
-
-        if (requestJsonObject.has("barrel")) {
-            String barrel = requestJsonObject.get("barrel").getAsString();
-
-            Criteria criteria5 = session.createCriteria(Barrel.class);
-            criteria5.add(Restrictions.eq("chamber", barrel));
-            Barrel gunBarrel = (Barrel) criteria5.uniqueResult();
-
-            criteria1.add(Restrictions.eq("barrel", gunBarrel));
-        }
-
-        if (requestJsonObject.has("stock")) {
-            String stock = requestJsonObject.get("stock").getAsString();
-
-            Criteria criteria6 = session.createCriteria(Stock.class);
-            criteria6.add(Restrictions.eq("w_trigger", stock));
-            Stock gunStock = (Stock) criteria6.uniqueResult();
-
-            criteria1.add(Restrictions.eq("stock", gunStock));
-        }
-
-        if (requestJsonObject.has("person")) {
-            String person = requestJsonObject.get("person").getAsString();
-
-            Criteria criteria7 = session.createCriteria(Person.class);
-            criteria7.add(Restrictions.eq("type", person));
-            Person gunPerson = (Person) criteria7.uniqueResult();
-
-            criteria1.add(Restrictions.eq("person", gunPerson));
-        }
-
         if (requestJsonObject.has("condition")) {
+            //condition selected
             String condition = requestJsonObject.get("condition").getAsString();
 
             //get condition from Db
-            Criteria criteria8 = session.createCriteria(Gun_condition.class);
-            criteria8.add(Restrictions.eq("name", condition));
-            Gun_condition gun_Condition = (Gun_condition) criteria8.uniqueResult();
+            Criteria criteria4 = session.createCriteria(Gun_condition.class);
+            criteria4.add(Restrictions.eq("name", condition));
+            Gun_condition gun_condition = (Gun_condition) criteria4.uniqueResult();
 
-            //filter products by condition from DB
-            criteria1.add(Restrictions.eq("gun_condition", gun_Condition));
+            criteria1.add(Restrictions.eq("gun_condition", gun_condition));
+        }
+
+        if (requestJsonObject.has("action")) {
+            //condition selected
+            String gunaction = requestJsonObject.get("action").getAsString();
+
+            //get condition from Db
+            Criteria criteria5 = session.createCriteria(Gun_Action.class);
+            criteria5.add(Restrictions.eq("bolt", gunaction));
+            Gun_Action action = (Gun_Action) criteria5.uniqueResult();
+
+            criteria1.add(Restrictions.eq("action", action));
+
+        }
+
+        if (requestJsonObject.has("barrel")) {
+            //condition selected
+            String gunbarrel = requestJsonObject.get("barrel").getAsString();
+
+            //get condition from Db
+            Criteria criteria6 = session.createCriteria(Barrel.class);
+            criteria6.add(Restrictions.eq("chamber", gunbarrel));
+            Barrel barrel = (Barrel) criteria6.uniqueResult();
+
+            criteria1.add(Restrictions.eq("barrel", barrel));
+
+        }
+
+        if (requestJsonObject.has("stock")) {
+            //condition selected
+            String gunStock = requestJsonObject.get("stock").getAsString();
+
+            //get condition from Db
+            Criteria criteria7 = session.createCriteria(Stock.class);
+            criteria7.add(Restrictions.eq("w_trigger", gunStock));
+            Stock stock = (Stock) criteria7.uniqueResult();
+
+            criteria1.add(Restrictions.eq("stock", stock));
+
+        }
+
+        if (requestJsonObject.has("person")) {
+            //condition selected
+            String gunperson = requestJsonObject.get("person").getAsString();
+
+            //get condition from Db
+            Criteria criteria8 = session.createCriteria(Person.class);
+            criteria8.add(Restrictions.eq("type", gunperson));
+            Person personType = (Person) criteria8.uniqueResult();
+
+            criteria1.add(Restrictions.eq("person", personType));
 
         }
 
@@ -139,7 +155,7 @@ public class SearchProducts extends HttpServlet {
         //set product range
         int firstResult = requestJsonObject.get("firstResult").getAsInt();
         criteria1.setFirstResult(firstResult);
-        criteria1.setMaxResults(6);
+        criteria1.setMaxResults(9);
 
         //get product list
         List<Product> productList = criteria1.list();

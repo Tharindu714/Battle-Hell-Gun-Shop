@@ -22,7 +22,7 @@
             axilInit.mobileMenuActivation();
             axilInit.menuLinkActive();
             axilInit.headerIconToggle();
-//            axilInit.priceRangeSlider();
+            axilInit.priceRangeSlider();
             axilInit.quantityRanger();
             axilInit.axilSlickActivation();
             axilInit.countdownInit('.coming-countdown', '2024/10/10');
@@ -201,20 +201,20 @@
             })
         },
 
-//        priceRangeSlider: function(e) {
-//            $('#slider-range').slider({
-//                range: true,
-//                min: 0,
-//                max: 5000,
-//                values: [0, 3000],
-//                slide: function(event, ui) {
-//                    $('#amount').val('$' + ui.values[0] + '  $' + ui.values[1]);
-//                }
-//            });
-//            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
-//                '  $' + $('#slider-range').slider('values', 1));
-//
-//        },
+        priceRangeSlider: function(e) {
+            $('#slider-range').slider({
+                range: true,
+                min: 0,
+                max: 1000000,
+                values: [0, 1000000],
+                slide: function(event, ui) {
+                    $('#amount').val('Rs.' + ui.values[0] + '  Rs.' + ui.values[1]);
+                }
+            });
+            $('#amount').val('Rs.' + $('#slider-range').slider('values', 0) +
+                '  Rs.' + $('#slider-range').slider('values', 1));
+
+        },
 
         quantityRanger: function() {
             $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');
@@ -517,8 +517,6 @@
                 ]
             });
 
-            
-
             $('.header-campaign-activation').slick({
                 infinite: true,
                 slidesToShow: 1,
@@ -777,6 +775,27 @@
                 $('.slick-slider').slick('setPosition');
             });
 
+            $('.slider-thumb-activation-one').slick({
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: false,
+                dots: true,
+                focusOnSelect: false,
+                speed: 1000,
+                autoplay: false,
+                asNavFor: '.slider-content-activation-one',
+                prevArrow: '<button class="slide-arrow prev-arrow"><i class="fal fa-long-arrow-left"></i></button>',
+                nextArrow: '<button class="slide-arrow next-arrow"><i class="fal fa-long-arrow-right"></i></button>',
+                responsive: [{
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
+
+            });
 
             $('.slider-thumb-activation-two').slick({
                 infinite: true,
@@ -813,6 +832,19 @@
                     }
                 ]
 
+            });
+
+            $('.slider-content-activation-one').slick({
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                dots: false,
+                focusOnSelect: false,
+                speed: 500,
+                fade: true,
+                autoplay: false,
+                asNavFor: '.slider-thumb-activation-one',
             });
 
             $('.slider-activation-one').slick({

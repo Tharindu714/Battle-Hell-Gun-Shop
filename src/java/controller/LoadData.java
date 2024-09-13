@@ -5,10 +5,9 @@ import com.google.gson.JsonObject;
 import entity.Barrel;
 import entity.Brand;
 import entity.Gun_Action;
-import entity.Gun_condition;
-import entity.Model;
-import entity.Person;
 import entity.Product;
+import entity.Gun_condition;
+import entity.Person;
 import entity.Stock;
 import java.io.IOException;
 import java.util.List;
@@ -36,17 +35,20 @@ public class LoadData extends HttpServlet {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         //main code
+        //get category list from DB
         Criteria criteria1 = session.createCriteria(Brand.class);
-        List<Brand> brandList = criteria1.list();
-        jsonObject.add("brandList", gson.toJsonTree(brandList));
+        List<Brand> categoryList = criteria1.list();
+        jsonObject.add("categoryList", gson.toJsonTree(categoryList));
 
-        Criteria criteria2 = session.createCriteria(Model.class);
-        List<Model> modelList = criteria2.list();
-        jsonObject.add("modelList", gson.toJsonTree(modelList));
+        //get condition list from DB
+        Criteria criteria2 = session.createCriteria(Gun_condition.class);
+        List<Gun_condition> conditionList = criteria2.list();
+        jsonObject.add("conditionList", gson.toJsonTree(conditionList));
 
+        //get condition list from DB
         Criteria criteria3 = session.createCriteria(Gun_Action.class);
-        List<Gun_Action> GunActionList = criteria3.list();
-        jsonObject.add("GunAction", gson.toJsonTree(GunActionList));
+        List<Gun_Action> actionList = criteria3.list();
+        jsonObject.add("actionList", gson.toJsonTree(actionList));
 
         Criteria criteria4 = session.createCriteria(Barrel.class);
         List<Barrel> barrelList = criteria4.list();
@@ -60,22 +62,18 @@ public class LoadData extends HttpServlet {
         List<Person> personList = criteria6.list();
         jsonObject.add("personList", gson.toJsonTree(personList));
 
-        Criteria criteria7 = session.createCriteria(Gun_condition.class);
-        List<Gun_condition> conditionList = criteria7.list();
-        jsonObject.add("personList", gson.toJsonTree(conditionList));
-
         //get product list from DB
-        Criteria criteria8 = session.createCriteria(Product.class);
+        Criteria criteria0 = session.createCriteria(Product.class);
 
         //Get latest product
-        criteria8.addOrder(Order.desc("id"));
-        jsonObject.addProperty("allProductCount", criteria8.list().size());
+        criteria0.addOrder(Order.desc("id"));
+        jsonObject.addProperty("allProductCount", criteria0.list().size());
 
         //set product range
-        criteria8.setFirstResult(0);
-        criteria8.setMaxResults(6);
+        criteria0.setFirstResult(0);
+        criteria0.setMaxResults(9);
 
-        List<Product> productList = criteria8.list();
+        List<Product> productList = criteria0.list();
 
         //remove user from product
         for (Product product : productList) {

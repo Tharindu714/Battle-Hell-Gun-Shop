@@ -1,16 +1,17 @@
 async function loadData() {
     const response = await fetch("LoadData");
 
+
     if (response.ok) {
         const json = await response.json();
         console.log(json);
-        
-        loadOption("brand", json.brandList, "name");
-        loadOption("action", json.GunActionList, "bolt");
+
+        loadOption("category", json.categoryList, "name");
+        loadOption("condition", json.conditionList, "name");
+        loadOption("action", json.actionList, "bolt");
         loadOption("barrel", json.barrelList, "chamber");
         loadOption("stock", json.stockList, "w_trigger");
         loadOption("person", json.personList, "type");
-        loadOption("condition", json.conditionList, "name");
         updateProductView(json);
 
     } else {
@@ -22,18 +23,27 @@ async function loadData() {
     }
 
 }
+
 function loadOption(prefix, dataList, property) {
     let options = document.getElementById(prefix + "-options");
     let li = document.getElementById(prefix + "-li");
-    
+    options.innerHTML = "";
+
     dataList.forEach(data => {
         let li_clone = li.cloneNode(true);
-//            li_clone.querySelector("#" + prefix + "a").innerHTML = data[property[1]];
+
+        if (prefix == "color") {
+            li_clone.style.borderColor = data[property];
+            li_clone.querySelector("#" + prefix + "-a").style.backgroundColor = data[property];
+        } else {
+            li_clone.querySelector("#" + prefix + "-a").innerHTML = data[property];
+        }
+
         options.appendChild(li_clone);
     });
 
-     
-    const all_li = document.querySelector("#" + prefix + "-options li");
+    //from template js
+    const all_li = document.querySelectorAll("#" + prefix + "-options li");
     all_li.forEach(x => {
         x.addEventListener('click', function () {
             all_li.forEach(y => y.classList.remove('chosen'));
@@ -41,11 +51,15 @@ function loadOption(prefix, dataList, property) {
         });
     });
 }
+
 async function searchProducts(firstResult) {
 
     //get search data
-    let Brand_name = document.getElementById("category-options")
-            .querySelectorAll(".chosen")?.querySelector("a").innerHTML;
+    let category_name = document.getElementById("category-options")
+            .querySelector(".chosen")?.querySelector("a").innerHTML;
+
+    let condition = document.getElementById("condition-options")
+            .querySelector(".chosen")?.querySelector("a").innerHTML;
 
     let action = document.getElementById("action-options")
             .querySelector(".chosen")?.querySelector("a").innerHTML;
@@ -59,23 +73,19 @@ async function searchProducts(firstResult) {
     let person = document.getElementById("person-options")
             .querySelector(".chosen")?.querySelector("a").innerHTML;
 
-    let condition = document.getElementById("condition-options")
-            .querySelector(".chosen")?.querySelector("a").innerHTML;
-
     let price_range_start = $("#slider-range").slider('values', 0);
-    let price_range_end = $("#slider-range").slider('values', 0);
+    let price_range_end = $("#slider-range").slider('values', 1);
 
     let sort_text = document.getElementById("st-sort").value;
 
     const data = {
         firstResult: firstResult,
-        Brand_name: Brand_name,
-        action: action,
-        stock: stock,
+        category_name: category_name,
         condition: condition,
+        action: action,
         barrel: barrel,
+        stock: stock,
         person: person,
-
         price_range_start: price_range_start,
         price_range_end: price_range_end,
         sort_text: sort_text
@@ -98,7 +108,6 @@ async function searchProducts(firstResult) {
     } else {
         Swal.fire({
             title: "Something went Wrong",
-            text: json.content,
             icon: "error"
         });
     }
@@ -119,9 +128,9 @@ function updateProductView(json) {
         let st_product_clone = st_product.cloneNode(true);
 
         //update cards
-        st_product_clone.querySelector("#st-product-a-1").href = "single-product.html?pid=" + product.id;
+        st_product_clone.querySelector("#st-product-a-1").href = "single-product.html?id=" + product.id;
         st_product_clone.querySelector("#st-product-img-1").src = "product-images/" + product.id + "/image1.png";
-        st_product_clone.querySelector("#st-product-a-2").href = "single-product.html?pid=" + product.id;
+        st_product_clone.querySelector("#st-product-a-2").href = "single-product.html?id=" + product.id;
         st_product_clone.querySelector("#st-product-title-1").innerHTML = product.title;
         st_product_clone.querySelector("#st-product-price-1").innerHTML = new Intl.NumberFormat(
                 "en-US",
@@ -139,7 +148,7 @@ function updateProductView(json) {
     st_pagination_container.innerHTML = "";
 
     let product_count = json.allProductCount;
-    const product_per_page = 6;
+    const product_per_page = 9;
 
     let pages = Math.ceil(product_count / product_per_page);
 
@@ -150,7 +159,7 @@ function updateProductView(json) {
 
         st_pagination_button_clone_prev.addEventListener("click", e => {
             currentPage--;
-            searchProducts(currentPage * 6);
+            searchProducts(currentPage * 9);
         });
 
         st_pagination_container.appendChild(st_pagination_button_clone_prev);
@@ -163,13 +172,13 @@ function updateProductView(json) {
 
         st_pagination_button_clone.addEventListener("click", e => {
             currentPage = i;
-            searchProducts(i * 6);
+            searchProducts(i * 9);
         });
 
         if (i === currentPage) {
-            st_pagination_button_clone.className = "axil-btn btn-bg-secondary me-2";
+            st_pagination_button_clone.className = "primary-btn text-light fw-bold me-4";
         } else {
-            st_pagination_button_clone.className = "axil-btn btn-bg-primary me-2";
+            st_pagination_button_clone.className = "primary-btn text-light fw-bold me-4";
         }
 
         st_pagination_container.appendChild(st_pagination_button_clone);
@@ -182,10 +191,14 @@ function updateProductView(json) {
 
         st_pagination_button_clone_next.addEventListener("click", e => {
             currentPage++;
-            searchProducts(currentPage * 6);
+            searchProducts(currentPage * 9);
         });
 
         st_pagination_container.appendChild(st_pagination_button_clone_next);
     }
 
+}
+
+function reload(){
+    window.location.reload();
 }
