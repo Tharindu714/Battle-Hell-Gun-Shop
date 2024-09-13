@@ -103,6 +103,46 @@ async function checkSignIn() {
                 addToCart(product.id, 1);
                 e.preventDefault();
             });
+//Wishlist Adding
+            document.getElementById("home-add-to-wishlist-1").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-2").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-3").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-4").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-5").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-6").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-7").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
+
+            document.getElementById("home-add-to-wishlist-8").addEventListener("click", (e) => {
+                addToWishList(product.id);
+                e.preventDefault();
+            });
         });
     }
 }
@@ -111,6 +151,39 @@ async function addToCart(id, qty) {
 
     const response = await fetch(
             "AddToCart?id=" + id + "&qty=" + qty
+            );
+    if (response.ok) {
+
+        const json = await response.json();
+        if (json.success) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: json.content,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                title: "Something went Wrong",
+                text: json.content,
+                icon: "error"
+            });
+        }
+    } else {
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
+        });
+    }
+
+}
+
+async function addToWishList(id) {
+
+    const response = await fetch(
+            "addToWishList?id=" + id
             );
     if (response.ok) {
 
