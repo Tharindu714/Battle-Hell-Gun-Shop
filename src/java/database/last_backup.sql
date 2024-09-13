@@ -35,11 +35,14 @@ CREATE TABLE IF NOT EXISTS `address` (
   KEY `fk_address_city1_idx` (`city_id`),
   CONSTRAINT `fk_address_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`),
   CONSTRAINT `fk_address_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.address: ~0 rows (approximately)
+-- Dumping data for table battlehell.address: ~3 rows (approximately)
 REPLACE INTO `address` (`id`, `line1`, `line2`, `postal_code`, `mobile`, `first_name`, `last_name`, `user_id`, `city_id`) VALUES
-	(1, '8853 ', 'Reading Rd', '45215', '0751441764', 'David', 'Smith Jr.', 1, 1);
+	(1, '8853 ', 'Reading Rd', '45215', '0751441764', 'David', 'Smith Jr.', 1, 1),
+	(2, '371 7th Ave,', 'New York', '10001', '0751441764', 'Tharindu', 'Chanaka', 1, 3),
+	(3, '13 Washington Square S,', 'New York', '10012', '0766135782', 'Tharindu', 'Chanaka', 1, 3),
+	(4, '240 Mercer St,', 'New York', '10012', '0743217890', 'Tharindu', 'Chanaka', 1, 3);
 
 -- Dumping structure for table battlehell.barrel
 CREATE TABLE IF NOT EXISTS `barrel` (
@@ -125,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.cart: ~2 rows (approximately)
+-- Dumping data for table battlehell.cart: ~4 rows (approximately)
 REPLACE INTO `cart` (`id`, `qty`, `user_id`, `product_id`) VALUES
 	(3, 2, 1, 1),
 	(4, 1, 1, 2),
@@ -261,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `model` (
   CONSTRAINT `fk_model_brand` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.model: ~14 rows (approximately)
+-- Dumping data for table battlehell.model: ~21 rows (approximately)
 REPLACE INTO `model` (`id`, `name`, `brand_id`) VALUES
 	(1, 'Emissary', 4),
 	(2, 'TRP', 4),
@@ -351,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_product_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.product: ~4 rows (approximately)
+-- Dumping data for table battlehell.product: ~9 rows (approximately)
 REPLACE INTO `product` (`id`, `title`, `description`, `model_id`, `stock_id`, `barrel_id`, `action_id`, `bullet_type_id`, `price`, `qty`, `reg_date`, `user_id`, `status_id`, `person_id`, `gun_condition_id`) VALUES
 	(1, 'Springfield Armory SA 35', 'Based on one of the most prolific and popular pistols in small arms history, the Springfield Armory SA-35 gives today\'s shooters a modern take on a revered classic. Featuring subtle but significant upgrades to John Moses Browning\'s original P-35 design, the 9mm SA-35 captures the appeal of the wood and steel era of arms making while offering the upgraded enhancements of today s defensive pistols. Made in the U.S.A. The SA-35 features rugged forged steel parts for strength and durability, improved ergonomics and enhanced controls, a factory tuned trigger, modern sights, an improved feed ramp design and an increased 15-round capacity. Model: SPHP9201.', 16, 3, 3, 6, 1, 780, 11, '2024-09-10 14:14:57', 1, 1, 3, 1),
 	(2, 'Ruger Security 9 Compact', 'Country of Origin:China <br/>\r\nPackage weight:1.0 lb  <br/>\r\nPackage quantity: 1  <br/>\r\nProduct Type: PILLOW  <br/>', 10, 6, 4, 2, 1, 972, 20, '2024-09-10 15:07:09', 1, 1, 2, 2),
