@@ -54,95 +54,17 @@ async function checkSignIn() {
                         minimumFractionDigits: 2
                     }
             ).format(product.price);
-            i++;
-            document.getElementById("home-add-to-cart-1").addEventListener("click", (e) => {
+            document.getElementById("home-add-to-cart-" + i).addEventListener("click", (e) => {
                 addToCart(product.id, 1);
                 e.preventDefault();
             });
-            document.getElementById("home-add-to-cart-2").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-3").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-4").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-5").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-6").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-7").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-8").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-9").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-10").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-11").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
-            document.getElementById("home-add-to-cart-12").addEventListener("click", (e) => {
-                addToCart(product.id, 1);
-                e.preventDefault();
-            });
+
 //Wishlist Adding
-            document.getElementById("home-add-to-wishlist-1").addEventListener("click", (e) => {
+            document.getElementById("home-add-to-wishlist-" + i).addEventListener("click", (e) => {
                 addToWishList(product.id);
                 e.preventDefault();
             });
-
-            document.getElementById("home-add-to-wishlist-2").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-3").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-4").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-5").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-6").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-7").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
-
-            document.getElementById("home-add-to-wishlist-8").addEventListener("click", (e) => {
-                addToWishList(product.id);
-                e.preventDefault();
-            });
+            i++;
         });
     }
 }

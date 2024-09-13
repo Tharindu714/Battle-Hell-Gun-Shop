@@ -51,17 +51,23 @@ async function loadCartItems() {
                         }
                 ).format(itemSubTotal);
 
+                RowClone.querySelector("#add-to-wishlist-main").addEventListener("click", (e) => {
+                    addToWishList(item.product.id);
+                    e.preventDefault();
+                });
                 container.appendChild(RowClone);
 
             });
 
             document.getElementById("cart-total-qty").innerHTML = totalQty + " Units";
-            document.getElementById("cart-total").innerHTML ="$ "+ new Intl.NumberFormat(
+            document.getElementById("cart-total").innerHTML = "$ " + new Intl.NumberFormat(
                     "en-US",
                     {
                         minimumFractionDigits: 2
                     }
             ).format(total);
+
+
 
         }
 
