@@ -10,7 +10,7 @@ async function loadWishItems() {
 
         if (json.length == 0) {
             Swal.fire({
-                title: "Your Cart is Empty",
+                title: "Your Wishlist is Empty",
                 text: json.content,
                 icon: "error"
             });

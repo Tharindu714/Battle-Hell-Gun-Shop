@@ -67,7 +67,9 @@ public class LoadWishItems extends HttpServlet {
 
                 }
             }else{
+                res.sendRedirect("index.html");
                System.out.println("User must Sign in"); 
+               
             }
         } catch (Exception e) {
             e.printStackTrace();

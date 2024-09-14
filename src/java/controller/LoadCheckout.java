@@ -60,12 +60,12 @@ public class LoadCheckout extends HttpServlet {
             criteria4.add(Restrictions.eq("user", user));
             List<Cart> cartList = criteria4.list();
 
+            //pack cities list in JSON Object
+            jsonObject.add("cityList", gson.toJsonTree(cityList));
+
             //pack address in JSON object
             address.setUser(null);
             jsonObject.add("address", gson.toJsonTree(address));
-
-            //pack cities list in JSON Object
-            jsonObject.add("cityList", gson.toJsonTree(cityList));
 
             //pack cart items in JSON Object
             for (Cart cart : cartList) {
@@ -73,13 +73,13 @@ public class LoadCheckout extends HttpServlet {
                 cart.getProduct().setUser(null);
             }
             jsonObject.add("cartList", gson.toJsonTree(cartList));
-            
+
             jsonObject.addProperty("success", true);
 
         } else {
             jsonObject.addProperty("message", "Not signed id");
         }
-        
+
         response.setContentType("application/json");
         response.getWriter().write(gson.toJson(jsonObject));
         session.close();

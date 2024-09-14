@@ -43,6 +43,8 @@ public class UpdateProfile extends HttpServlet {
         String address2 = requestJsonObject.get("address2").getAsString();
         String postalCode = requestJsonObject.get("postalCode").getAsString();
         String mobile = requestJsonObject.get("mobile").getAsString();
+//        String first_name = requestJsonObject.get("first_name").getAsString();
+//        String last_name = requestJsonObject.get("last_name").getAsString();
 
         if (httpSession.getAttribute("user") != null) {
             //user signed in
@@ -103,8 +105,8 @@ public class UpdateProfile extends HttpServlet {
                         address.setMobile(mobile);
                         address.setPostal_code(postalCode);
 
-                        address.setFirst_name(user.getFirst_name());
-                        address.setLast_name(user.getLast_name());
+                        address.setFirst_name("Not Set");
+                        address.setLast_name("Not Set");
                         session.save(address);
                         transaction.commit();
                     }

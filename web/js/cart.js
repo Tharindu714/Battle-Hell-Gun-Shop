@@ -51,10 +51,10 @@ async function loadCartItems() {
                         }
                 ).format(itemSubTotal);
 
-                RowClone.querySelector("#add-to-wishlist-main").addEventListener("click", (e) => {
-                    addToWishList(item.product.id);
-                    e.preventDefault();
-                });
+//                RowClone.querySelector("#add-to-wishlist-main").addEventListener("click", (e) => {
+//                    addToWishList(item.product.id);
+//                    e.preventDefault();
+//                });
                 container.appendChild(RowClone);
 
             });

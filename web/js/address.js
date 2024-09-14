@@ -34,6 +34,7 @@ async function loadProfileData() {
             let new_in_tag3 = document.createElement("li");
             new_in_tag3.innerHTML = "Email Address : " + user.email;
             user_input.appendChild(new_in_tag3);
+            LoadCity();
         } else {
             Swal.fire({
                 title: "User is not valid",
@@ -41,7 +42,7 @@ async function loadProfileData() {
                 icon: "error"
             });
         }
-        loadCity();
+
     } else {
         Swal.fire({
             title: "Please try again Later ",
@@ -51,32 +52,31 @@ async function loadProfileData() {
     }
 }
 
-async function loadCity() {
-
-    const response = await fetch("LoadCheckout");
-
+async function LoadCity() {
+    const response = await fetch("LoadCity");
     if (response.ok) {
         const json = await response.json();
-        console.log(json);
 
-        if (json.success) {
-            //store response data
-            const address = json.address;
-            const cityList = json.cityList;
-            const cartList = json.cartList;
+        const cityList = json.cityList; //CITY LIST
+        loadSelect("profile-city", cityList, ["id", "name"]);
 
-            //load cities
-            let citySelect = document.getElementById("profile-city");
-            citySelect.length = 1;
-
-            cityList.forEach(city => {
-                let cityOption = document.createElement("option");
-                cityOption.value = city.id;
-                cityOption.innerHTML = city.name;
-                citySelect.appendChild(cityOption);
-            });
-        }
+    } else {
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
+        });
     }
+}
+
+function loadSelect(id, list, props) {
+    const selectTag = document.getElementById(id);
+    list.forEach(item => {
+        let tag = document.createElement("option");
+        tag.value = item[props[0]];
+        tag.innerHTML = item[props[1]];
+        selectTag.appendChild(tag);
+    });
 }
 
 async function SubmitProfile() {
@@ -87,6 +87,7 @@ async function SubmitProfile() {
     let address2 = document.getElementById("profile-address2");
     let postalCode = document.getElementById("profile-postal-code");
     let mobile = document.getElementById("profile-mobile");
+
     const data = {
         cityId: city.value,
         address1: address1.value,
@@ -117,8 +118,8 @@ async function SubmitProfile() {
             address1.value = "";
             address2.value = "";
             postalCode.value = "";
-            mobile.value ="";
-           
+            mobile.value = "";
+
         } else {
             Swal.fire({
                 title: "Something went Wrong",
