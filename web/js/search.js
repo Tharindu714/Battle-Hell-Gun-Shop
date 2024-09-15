@@ -138,6 +138,21 @@ function updateProductView(json) {
                     minimumFractionDigits: 2
                 }
         ).format(product.price);
+        st_product_clone.querySelector("#st-product-cart")
+                .addEventListener(
+                        "click",
+                        (e) => {
+                    addToCart(product.id, 1);
+                    e.preventDefault();
+                });
+
+        st_product_clone.querySelector("#st-product-wish")
+                .addEventListener(
+                        "click",
+                        (e) => {
+                    addToWishList(product.id);
+                    e.preventDefault();
+                });
 
         st_product_container.appendChild(st_product_clone);
 
@@ -199,6 +214,74 @@ function updateProductView(json) {
 
 }
 
-function reload(){
+function reload() {
     window.location.reload();
+}
+
+async function addToCart(id, qty) {
+
+    const response = await fetch(
+            "AddToCart?id=" + id + "&qty=" + qty
+            );
+
+    if (response.ok) {
+
+        const json = await response.json();
+        if (json.success) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: json.content,
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        } else {
+            Swal.fire({
+                title: "Something went Wrong",
+                text: json.content,
+                icon: "error"
+            });
+        }
+    } else {
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
+        });
+    }
+
+}
+
+async function addToWishList(id) {
+
+    const response = await fetch(
+            "addToWishList?id=" + id
+            );
+    if (response.ok) {
+
+        const json = await response.json();
+        if (json.success) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: json.content,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                title: "Something went Wrong",
+                text: json.content,
+                icon: "error"
+            });
+        }
+    } else {
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
+        });
+    }
+
 }

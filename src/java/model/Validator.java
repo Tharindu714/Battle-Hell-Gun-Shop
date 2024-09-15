@@ -1,10 +1,5 @@
 package model;
 
-/**
- *
- * @author ByteBigBoss
- * @org ImaginecoreX
- */
 public class Validator {
 
     public static boolean VALIDATE_EMAIL(String email){

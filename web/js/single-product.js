@@ -69,6 +69,15 @@ async function loadProduct() {
                         e.preventDefault();
                     });
 
+            document.getElementById("add-to-wishlist-main")
+                    .addEventListener(
+                            "click",
+                            (e) => {
+
+                        addToWishList(id);
+                        e.preventDefault();
+                    });
+
             //GET SIMILER PRODUCT
             let ProductHtml = document.getElementById("similer-product");
 
@@ -99,11 +108,15 @@ async function loadProduct() {
                             e.preventDefault();
                         });
 
-
+                productCloneHtml.querySelector("#similer-product-add-to-wishlist")
+                        .addEventListener(
+                                "click",
+                                (e) => {
+                            addToWishList(item.id);
+                            e.preventDefault();
+                        });
 
                 document.getElementById("similer-product-main").appendChild(productCloneHtml);
-
-
             });
 
             $('.recent-product-activation').slick({
@@ -166,6 +179,39 @@ async function addToCart(id, qty) {
                 timer: 1500
             });
 
+        } else {
+            Swal.fire({
+                title: "Something went Wrong",
+                text: json.content,
+                icon: "error"
+            });
+        }
+    } else {
+        Swal.fire({
+            title: "Please try again Later ",
+            text: json.content,
+            icon: "error"
+        });
+    }
+
+}
+
+async function addToWishList(id) {
+
+    const response = await fetch(
+            "addToWishList?id=" + id
+            );
+    if (response.ok) {
+
+        const json = await response.json();
+        if (json.success) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: json.content,
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
             Swal.fire({
                 title: "Something went Wrong",

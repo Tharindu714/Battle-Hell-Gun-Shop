@@ -2,14 +2,24 @@
 <html lang="zxx" class="no-js">
 
     <head>
+        <!-- Mobile Specific Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Favicon-->
         <link rel="shortcut icon" href="img/fav.png">
+        <!-- Author Meta -->
         <meta name="author" content="CodePixar">
+        <!-- Meta Description -->
         <meta name="description" content="">
+        <!-- Meta Keyword -->
         <meta name="keywords" content="">
+        <!-- meta character set -->
         <meta charset="UTF-8">
-        <title>Your Watch List Page</title>
+        <!-- Site Title -->
+        <title>Purchasing History</title>
 
+        <!--
+                CSS
+                ============================================= -->
         <link rel="stylesheet" href="css/linearicons.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -19,6 +29,7 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
 
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/vendor/font-awesome.css">
         <link rel="stylesheet" href="assets/css/vendor/flaticon/flaticon.css">
@@ -29,19 +40,20 @@
         <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/vendor/base.css">
         <link rel="stylesheet" href="assets/css/style.min.css">
+
     </head>
 
-    <body class="bg-dark" onload="loadWishItems();">
+    <body class="bg-dark" onload="loadPurchasedItems();">
 
         <!-- Start Banner Area -->
-        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/wishlst.jpg) center no-repeat;">
+        <section class="banner-area organic-breadcrumb" style="background: url(img/banner/Purchase.jpg) center no-repeat;">
             <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
                     <div class="col-first">
-                        <h1>My Favorite Items</h1>
+                        <h1>Order History</h1>
                         <nav class="d-flex align-items-center">
                             <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                            <a href="#">Watch List</a>
+                            <a href="#">purchasing History</a>
                         </nav>
                     </div>
                 </div>
@@ -49,34 +61,71 @@
         </section>
         <!-- End Banner Area -->
 
-        <!--================ Cart Area =================-->
+        <!--================Cart Area =================-->
         <main class="main-wrapper" id="cart-main" style="background-color: #333333">
             <!-- Start Cart Area  -->
             <div class="axil-product-cart-area axil-section-gap">
                 <div class="container">
                     <div class="axil-product-cart-wrap">
+                        <div class="product-table-heading">
+                            <h4 class="title text-warning">Purchasing History</h4>
+                            <a href="#" class="cart-clear link-light"></a>
+                        </div>
                         <div class="table-responsive">
                             <table class="table axil-product-table axil-cart-table mb--40">
                                 <thead>
                                     <tr>
-                                        <th class="product-remove bg-secondary-subtle col-2"></th>
-                                        <th class="product-thumbnail bg-dark text-light col-6">Product</th>
-                                        <th class="product-title bg-dark text-light col-5"></th>
-                                        <th class="product-price bg-dark text-light col-5">Price ($)</th>
-                                        <!--<th scope="col" class="product-quantity bg-dark text-light">Quantity</th>-->
-                                        <!--<th scope="col" class="product-subtotal bg-dark text-light">Subtotal</th>-->
+                                        <th scope="col" class="product-remove bg-secondary-subtle"></th>
+                                        <th scope="col" class="product-thumbnail bg-dark text-light">Product</th>
+                                        <th scope="col" class="product-title bg-dark text-light"></th>
+                                        <th scope="col" class="product-price bg-dark text-light">Price</th>
+                                        <th scope="col" class="product-quantity bg-dark text-light">Quantity</th>
+                                        <th scope="col" class="product-subtotal bg-dark text-light">Total</th>
+                                        <th scope="col" class="product-subtotal bg-dark text-light">Status</th>
+
                                     </tr>
                                 </thead>
-                                <tbody id="wish-item-container">
-                                    <tr id="wish-item-row">
+                                <tbody id="order-item-container">
+                                    <tr id="order-item-row">
                                         <td class="product-remove bg-dark"><a href="#" class="remove-wishlist"><i class="fal fa-times"></i></a></td>
-                                        <td class="bg-secondary-subtle"><a href="img/pleasewait.png" id="wish-item-a"><img id="wish-item-img"></a></td>
-                                        <td class="product-title bg-dark-subtle"><a href="#" id="wish-item-title"></a></td>
-                                        <td class="product-price bg-secondary-subtle" data-title="Price"><span class="currency-symbol fw-bold"> </span> <span id="wish-item-price" class="text-black"></span></td>
-                                        
+                                        <td class="product-thumbnail bg-secondary-subtle"><img id="order-item-img" src="img/pleasewait.png"></td>
+                                        <td class="product-title bg-dark-subtle" id="order-item-title"><a href="#" id="order-item-a"></a></td>
+                                        <td class="product-price bg-secondary-subtle" data-title="Price"><span class="currency-symbol fw-bold">$ </span> <span id="order-item-price" class="text-black"></span></td>
+                                        <td class="product-quantity bg-dark-subtle" data-title="Qty">
+                                            <div class="product_count">
+                                                <input type="text" name="cart-item-qty" id="order-item-qty" maxlength="12" value="0" title="Quantity:"
+                                                       class="input-text qty">
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal bg-dark" data-title="Subtotal"><span class="currency-symbol fw-bold text-white-50">$</span><span id="order-item-subtotal" class="text-white"></span></td>
+                                        <td class="product-price bg-secondary-subtle"><span id="order-item-status" class="text-black"></span></td>
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-5 col-lg-10 offset-xl-7 offset-lg-2">
+                                <div class="axil-order-summery mt--20 bg-dark">
+                                    <h5 class="title mb--20 text-warning">Customer Details</h5>
+                                    <div class="summery-table-wrap">
+                                        <table class="table summery-table mb--30">
+                                            <tbody id="detail-order-item-container">
+                                                <tr class="order-subtotal" id="detail-order-item-row">
+                                                    <td class="text-light">Full Name :</td>
+                                                    <td class="order-total-amount text-light" id="order-cus-fullname"></td>
+                                                </tr>
+
+                                                <tr class="order-subtotal" id="detail-order-item-row2">
+                                                    <td class="text-light">Home Address :</td>
+                                                    <td class="order-total-amount text-warning" id="order-address"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--<a href="checkout.html" class="primary-btn checkout-btn">Process to Checkout</a>-->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,7 +222,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="js/gmaps.min.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/Wishlist.js"></script>
+        <script src="js/purchasing.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 
