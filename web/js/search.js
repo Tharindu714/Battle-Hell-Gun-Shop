@@ -155,7 +155,6 @@ function updateProductView(json) {
                 });
 
         st_product_container.appendChild(st_product_clone);
-
     });
 
     //start pagination

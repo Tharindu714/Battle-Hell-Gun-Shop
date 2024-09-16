@@ -34,7 +34,7 @@ public class SearchProducts extends HttpServlet {
         Gson gson = new Gson();
 
         JsonObject responseJsonObject = new JsonObject();
-        responseJsonObject.addProperty("success", false);
+        responseJsonObject.addProperty("success", true);
 
         //get request json
         JsonObject requestJsonObject = gson.fromJson(request.getReader(), JsonObject.class);
@@ -52,14 +52,16 @@ public class SearchProducts extends HttpServlet {
             //get category list from Db
             Criteria criteria2 = session.createCriteria(Brand.class);
             criteria2.add(Restrictions.eq("name", categoryName));
-            List<Brand> categoryList = criteria2.list();
+            Brand brand = (Brand) criteria2.uniqueResult();
 
-            //get models by category from DB
             Criteria criteria3 = session.createCriteria(Model.class);
-            criteria3.add(Restrictions.in("brand", categoryList));
+            criteria3.add(Restrictions.eq("brand", brand));
             List<Model> modelList = criteria3.list();
 
-            criteria1.add(Restrictions.in("model", modelList));
+            if (!modelList.isEmpty()) {
+                criteria1.add(Restrictions.in("model", modelList));
+            }
+
         }
 
         if (requestJsonObject.has("condition")) {
@@ -71,7 +73,9 @@ public class SearchProducts extends HttpServlet {
             criteria4.add(Restrictions.eq("name", condition));
             Gun_condition gun_condition = (Gun_condition) criteria4.uniqueResult();
 
-            criteria1.add(Restrictions.eq("gun_condition", gun_condition));
+            if (gun_condition != null) {
+                criteria1.add(Restrictions.eq("gun_condition", gun_condition));
+            }
         }
 
         if (requestJsonObject.has("action")) {
@@ -83,7 +87,9 @@ public class SearchProducts extends HttpServlet {
             criteria5.add(Restrictions.eq("bolt", gunaction));
             Gun_Action action = (Gun_Action) criteria5.uniqueResult();
 
-            criteria1.add(Restrictions.eq("action", action));
+            if (action != null) {
+                criteria1.add(Restrictions.eq("action", action));
+            }
 
         }
 
@@ -96,7 +102,9 @@ public class SearchProducts extends HttpServlet {
             criteria6.add(Restrictions.eq("chamber", gunbarrel));
             Barrel barrel = (Barrel) criteria6.uniqueResult();
 
-            criteria1.add(Restrictions.eq("barrel", barrel));
+            if (barrel != null) {
+                criteria1.add(Restrictions.eq("barrel", barrel));
+            }
 
         }
 
@@ -109,7 +117,9 @@ public class SearchProducts extends HttpServlet {
             criteria7.add(Restrictions.eq("w_trigger", gunStock));
             Stock stock = (Stock) criteria7.uniqueResult();
 
-            criteria1.add(Restrictions.eq("stock", stock));
+            if (stock != null) {
+                criteria1.add(Restrictions.eq("stock", stock));
+            }
 
         }
 
@@ -122,8 +132,9 @@ public class SearchProducts extends HttpServlet {
             criteria8.add(Restrictions.eq("type", gunperson));
             Person personType = (Person) criteria8.uniqueResult();
 
-            criteria1.add(Restrictions.eq("person", personType));
-
+            if (personType != null) {
+                criteria1.add(Restrictions.eq("person", personType));
+            }
         }
 
         double startPrice = requestJsonObject.get("price_range_start").getAsDouble();
@@ -135,18 +146,21 @@ public class SearchProducts extends HttpServlet {
         //filter products by sort from Db
         String sortText = requestJsonObject.get("sort_text").getAsString();
 
-        if (sortText.equals("Sort by Latest")) {
-            criteria1.addOrder(Order.desc("id"));
-
-        } else if (sortText.equals("Sort by Oldest")) {
-            criteria1.addOrder(Order.asc("id"));
-
-        } else if (sortText.equals("Sort by Name")) {
-            criteria1.addOrder(Order.asc("title"));
-
-        } else if (sortText.equals("Sort by price")) {
-            criteria1.addOrder(Order.asc("price"));
-
+        switch (sortText) {
+            case "Sort by Latest":
+                criteria1.addOrder(Order.desc("id"));
+                break;
+            case "Sort by Oldest":
+                criteria1.addOrder(Order.asc("id"));
+                break;
+            case "Sort by Name":
+                criteria1.addOrder(Order.asc("title"));
+                break;
+            case "Sort by price":
+                criteria1.addOrder(Order.asc("price"));
+                break;
+            default:
+                break;
         }
 
         //get all product count

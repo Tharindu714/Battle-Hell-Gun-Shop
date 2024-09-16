@@ -189,9 +189,9 @@ public class Checkout extends HttpServlet {
                 //calculate amount
                 amount += cartItem.getProduct().getPrice() * cartItem.getQty();
                 if (address.getCity().getId() == 1) {
-                    amount += 1000;
+                    amount += 100;
                 } else {
-                    amount += 2500;
+                    amount += 250;
                 }
                 //calculate amount
 
