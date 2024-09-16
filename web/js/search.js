@@ -31,14 +31,7 @@ function loadOption(prefix, dataList, property) {
 
     dataList.forEach(data => {
         let li_clone = li.cloneNode(true);
-
-        if (prefix == "color") {
-            li_clone.style.borderColor = data[property];
-            li_clone.querySelector("#" + prefix + "-a").style.backgroundColor = data[property];
-        } else {
             li_clone.querySelector("#" + prefix + "-a").innerHTML = data[property];
-        }
-
         options.appendChild(li_clone);
     });
 

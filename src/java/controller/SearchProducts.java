@@ -13,6 +13,7 @@ import entity.Person;
 import entity.Stock;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,13 +54,20 @@ public class SearchProducts extends HttpServlet {
             Criteria criteria2 = session.createCriteria(Brand.class);
             criteria2.add(Restrictions.eq("name", categoryName));
             Brand brand = (Brand) criteria2.uniqueResult();
+//            List<Brand> brandList = criteria2.list();
 
             Criteria criteria3 = session.createCriteria(Model.class);
             criteria3.add(Restrictions.eq("brand", brand));
             List<Model> modelList = criteria3.list();
 
             if (!modelList.isEmpty()) {
-                criteria1.add(Restrictions.in("model", modelList));
+                criteria1.add(Restrictions.in("model", modelList)); // Only add the filter if list is not empty
+            } else {
+                // Return early with empty results if modelList is empty
+                responseJsonObject.add("productList", gson.toJsonTree(new ArrayList<>()));
+                response.setContentType("application/json");
+                response.getWriter().write(gson.toJson(responseJsonObject));
+                return;
             }
 
         }

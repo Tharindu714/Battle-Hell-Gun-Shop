@@ -94,7 +94,7 @@ async function loadProduct() {
 //                productCloneHtml.querySelector("#similer-product-a2").href = "single-product.html?id=" + item.id;
                 productCloneHtml.querySelector("#similer-product-title").innerHTML = item.title;
                 productCloneHtml.querySelector("#similer-product-person").innerHTML = item.person.type;
-                productCloneHtml.querySelector("#similer-product-price").innerHTML = "Rs. " + new Intl.NumberFormat(
+                productCloneHtml.querySelector("#similer-product-price").innerHTML = new Intl.NumberFormat(
                         "en-US",
                         {
                             minimumFractionDigits: 2
