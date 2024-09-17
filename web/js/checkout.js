@@ -3,8 +3,12 @@
 payhere.onCompleted = function onCompleted(orderId) {
     console.log("Payment completed. OrderID:" + orderId);
     // Note: validate the payment and show success or failure page to the customer
-    popup.success({
-        message: "Thank you, Payment completed!"
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Thank you, Payment completed!",
+        showConfirmButton: false,
+        timer: 1500
     });
     window.location = "index.html";
 };
@@ -136,12 +140,12 @@ async function loadData() {
                 let shipping_amount = 0;
 
                 if (citySelect.value === "1") {
-                    //Colombo
-                    shipping_amount = item_count * 1000;
+
+                    shipping_amount = item_count * 10;
 
                 } else {
-                    //out of Colombo
-                    shipping_amount = item_count * 2500;
+
+                    shipping_amount = item_count * 25;
                 }
 
                 st_order_shipping_tr.querySelector("#st-shipping-amount").innerHTML = new Intl.NumberFormat(
@@ -212,6 +216,16 @@ async function checkout() {
         console.log(json);
 
         if (json.success) {
+            firstName.value = "";
+            lastName.value = "";
+            city.value = 0;
+            address1.value = "";
+            address2.value = "";
+            postalCode.value = "";
+            mobile.value = "";
+            document.querySelector('#checkbox1').checked = false;
+
+
             Swal.fire({
                 position: "center",
                 icon: "success",
@@ -219,7 +233,7 @@ async function checkout() {
                 showConfirmButton: false,
                 timer: 1500
             });
-            
+
             console.log(json.payhereJson);
             payhere.startPayment(json.payhereJson);
         } else {

@@ -57,9 +57,7 @@ public class Checkout extends HttpServlet {
         String mobile = requestJsonObject.get("mobile").getAsString();
 
         if (httpSession.getAttribute("user") != null) {
-            //user signed in
 
-            //get user from db
             User_DTO user_DTO = (User_DTO) httpSession.getAttribute("user");
             Criteria criteria1 = session.createCriteria(User.class);
             criteria1.add(Restrictions.eq("email", user_DTO.getEmail()));

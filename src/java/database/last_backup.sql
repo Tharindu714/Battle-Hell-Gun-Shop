@@ -46,6 +46,17 @@ REPLACE INTO `address` (`id`, `line1`, `line2`, `postal_code`, `mobile`, `first_
 	(5, '16260 Paramount Blvd', 'Paramount', '90723', '0754326789', 'Not Set', 'Not Set', 2, 4),
 	(6, '4368 Santa Anita Avenue', 'EL Monte ', '91731', '0713456789', 'Not Set', 'Not Set', 3, 3);
 
+-- Dumping structure for table battlehell.admin
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(60) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- Dumping data for table battlehell.admin: ~0 rows (approximately)
+
 -- Dumping structure for table battlehell.barrel
 CREATE TABLE IF NOT EXISTS `barrel` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -122,21 +133,9 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.cart: ~11 rows (approximately)
-REPLACE INTO `cart` (`id`, `qty`, `user_id`, `product_id`) VALUES
-	(21, 2, 1, 9),
-	(22, 1, 1, 6),
-	(23, 1, 1, 1),
-	(24, 2, 1, 7),
-	(27, 1, 1, 5),
-	(28, 1, 1, 2),
-	(29, 1, 1, 10),
-	(30, 1, 1, 8),
-	(33, 4, 3, 11),
-	(34, 2, 3, 9),
-	(35, 2, 3, 4);
+-- Dumping data for table battlehell.cart: ~10 rows (approximately)
 
 -- Dumping structure for table battlehell.city
 CREATE TABLE IF NOT EXISTS `city` (
@@ -283,7 +282,7 @@ REPLACE INTO `model` (`id`, `name`, `brand_id`) VALUES
 	(12, 'Ruger Blackhawk', 3),
 	(13, 'Savage 1907', 6),
 	(14, 'Stance 9mm', 6),
-	(15, '45 ACP', 6),
+	(15, '64 F Sport', 6),
 	(16, 'SA-35', 4),
 	(17, 'MC1sc Centennial', 12),
 	(18, 'Hellcat Series', 4),
@@ -359,26 +358,30 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_product_person1` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`),
   CONSTRAINT `fk_product_status1` FOREIGN KEY (`status_id`) REFERENCES `gun_status` (`id`),
   CONSTRAINT `fk_product_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.product: ~11 rows (approximately)
+-- Dumping data for table battlehell.product: ~16 rows (approximately)
 REPLACE INTO `product` (`id`, `title`, `description`, `model_id`, `stock_id`, `barrel_id`, `action_id`, `bullet_type_id`, `price`, `qty`, `reg_date`, `user_id`, `status_id`, `person_id`, `gun_condition_id`) VALUES
-	(1, 'Springfield Armory SA 35', 'Based on one of the most prolific and popular pistols in small arms history, the Springfield Armory SA-35 gives today\'s shooters a modern take on a revered classic. Featuring subtle but significant upgrades to John Moses Browning\'s original P-35 design, the 9mm SA-35 captures the appeal of the wood and steel era of arms making while offering the upgraded enhancements of today s defensive pistols. Made in the U.S.A. The SA-35 features rugged forged steel parts for strength and durability, improved ergonomics and enhanced controls, a factory tuned trigger, modern sights, an improved feed ramp design and an increased 15-round capacity. Model: SPHP9201.', 16, 3, 3, 6, 1, 780, 11, '2024-09-10 14:14:57', 1, 1, 3, 1),
+	(1, 'Springfield Armory SA 35', 'Based on one of the most prolific and popular pistols in small arms history, the Springfield Armory SA-35 gives today\'s shooters a modern take on a revered classic. Featuring subtle but significant upgrades to John Moses Browning\'s original P-35 design, the 9mm SA-35 captures the appeal of the wood and steel era of arms making while offering the upgraded enhancements of today s defensive pistols. Made in the U.S.A. The SA-35 features rugged forged steel parts for strength and durability, improved ergonomics and enhanced controls, a factory tuned trigger, modern sights, an improved feed ramp design and an increased 15-round capacity. Model: SPHP9201.', 16, 3, 3, 6, 1, 780, 10, '2024-09-10 14:14:57', 1, 1, 3, 1),
 	(2, 'Ruger Security 9 Compact', 'Country of Origin:China <br/>\r\nPackage weight:1.0 lb  <br/>\r\nPackage quantity: 1  <br/>\r\nProduct Type: PILLOW  <br/>', 10, 6, 4, 2, 1, 972, 20, '2024-09-10 15:07:09', 1, 1, 2, 2),
 	(3, 'Mossberg Launches MC1sc', 'O.F. Mossberg & Sons launched a Centennial Sweepstakes in which enthusiasts can register to win a limited-edition MC1sc Centennial 9 mm pistol. No purchase is necessary to enter the sweepstakes, which ends May 31, 2019. Visit the promotions web page to sign up. Certain limitations apply.', 17, 2, 2, 6, 1, 2130, 50, '2024-09-12 15:04:14', 1, 1, 1, 1),
 	(4, 'Springfield Hellcat Handguns', 'The Hellcat series of 9mm pistols offers CCW enthusiasts a pistol that combines impressive capacity with utterly capable performance. The micro 9mm Hellcat features best in class capacity of 11+1 and 13+1 with included extended magazine, and the RDP (Rapid Defense Package) variant adds in a high-performance Self Indexing Compensator and included HEX Wasp optic. The Hellcat Pro extends the barrel to 3.7 inches and lengthens the grip to offer an astounding 15+1 capacity. The result? A Hellcat for any need.', 18, 6, 6, 6, 1, 986, 20, '2024-09-12 15:28:07', 1, 1, 2, 3),
-	(5, 'New Mossberg 940 Pro', 'Mossberg s ever-growing 940 line of semi-automatic shotguns just keeps growing. The latest additions will probably be some of their most popular. The 940 Pro Sporting has beautiful walnut furniture and the 940 Pro Sporting Super Bantam is great for smaller-framed shooters. Here s Mossberg s announcement', 19, 9, 1, 4, 1, 3500, 45, '2024-09-12 18:09:33', 1, 1, 2, 3),
+	(5, 'New Mossberg 940 Pro', 'Mossberg s ever-growing 940 line of semi-automatic shotguns just keeps growing. The latest additions will probably be some of their most popular. The 940 Pro Sporting has beautiful walnut furniture and the 940 Pro Sporting Super Bantam is great for smaller-framed shooters. Here s Mossberg s announcement', 19, 9, 1, 4, 1, 3500, 44, '2024-09-12 18:09:33', 1, 1, 2, 3),
 	(6, 'Heckler & Koch HK512', 'The HK 512 was developed and produced circa the 1970s-1980s by Franchi as the first semi-automatic shotgun developed for law enforcement use. Adopted by German law enforcement and counter-terrorism units such as GSG9, these shotguns were sold in limited quantities in the United States (a total of approximately 1,500 made with only 343 Imported into the U.S.).', 20, 2, 1, 6, 1, 5800, 26, '2024-09-12 18:16:39', 1, 1, 3, 1),
 	(7, 'Ruger SA80 A2 Rifle', 'The ICS SA80 or L85 A2 is rated as one of the best SA80 replica s money can buy, full metal with excellent attention to detail in the stamping and weld seams give this airsoft rifle a great feel and look', 11, 5, 6, 7, 1, 2100, 59, '2024-09-12 18:56:41', 1, 1, 1, 1),
-	(8, 'Moosberg Taurus 856 Special Revolver', 'The UL 856, by Taurus, is a six-shot, 2-inch barreled .38 Special that is just over 6.5 inches long and 1.41 inches wide. Before you think that seems to be a bit large for a concealed-carry gun, given today s micro semiauto s, the 856 is shorter than a lot of pistols that are considered concealable compacts. This includes the popular Smith & Wesson M&P9 M2.0 and SIG Sauer P320. (The UL 856 actually matches the P320 Compact in width.)', 21, 1, 5, 5, 1, 400, 99, '2024-09-12 19:16:00', 1, 1, 1, 3),
-	(9, 'Smith & Wesson SMG 76', 'This Smith and Wesson S&W 76 is a pre-1986 transferable machine gun and is in like new / excellent condition. The exterior shows minimal handling marks on the tube and frame. Inside, the firing pin is smooth and rounded, barrel is shinny and the rifling is sharp. The extractor is straight and sharp and the sear appears to be the correct angle with zero wear. Function tests work correct for safe, semi and full auto use.', 22, 8, 2, 7, 1, 19000, 29, '2024-09-12 19:50:48', 1, 1, 3, 1),
-	(10, 'Smith & Wesson 350 Powerful', 'Winchester made the 350 Legend to be a saving grace for those who are restricted to straight-walled cartridges whilst hunting, which is why it flies off the shelves in states like Ohio and Indiana. Here in New York and most of Pennsylvania, we are free to hunt with whatever we wish, including handguns. In the dense woods that are native to these areas, handgun hunting is the way to go. With most shots being inside of 50 yards, there is no reason to bring a rifle into this.', 25, 9, 3, 6, 1, 1030, 100, '2024-09-14 12:47:48', 2, 1, 2, 1),
-	(11, 'Smith & Wesson Model 986', 'The 986 is an all-business, made-to-perform revolver that offered excellent accuracy with Hornady Critical Duty ammo. This highly modified L-frame had a smooth DA trigger due to the titanium cylinder. The SA trigger was crisp. We liked the large bold sights and full-size grip, which offered good recoil management. The 986 takes effort to conceal and carry.', 24, 1, 5, 6, 1, 1529, 50, '2024-09-16 01:19:47', 3, 1, 1, 2),
-	(12, 'Savage Arms Model 1907 ', 'Compact, all-metal guns designed for home defense, carry, and even military service at the beginning of the 20th century, the Savage Model 1907 and 1917 boasted some unique and forward-thinking design features for the day. Originally patented in November 1905, it would take almost 100 years for another semi-auto Savage pistol to roll off the assembly line when the Model 1917 ended production in 1928.', 13, 2, 3, 6, 1, 650, 30, '2024-09-16 19:02:50', 1, 1, 2, 4),
-	(13, 'HECKLER & KOCH MR27 ', 'The program called for a magazine-fed 5.56 mm automatic rifle designed to be operated by a single Marine and possessing greater accuracy, increased reliability, and lighter weight than the existing belt-fed 5.56 mm machine gun. These factors would enhance the automatic rifleman s maneuverability and speed to either augment and/or replace the belt-fed M249 Squad Automatic Weapon (SAW). As recent testing and operational deployment has confirmed, the IAR is more readily adapted for house-to-house clearing operations and day-to-day employment by the automatic rifleman when compared to an M249.', 26, 4, 2, 7, 1, 9000, 25, '2024-09-16 19:20:37', 1, 1, 2, 1),
-	(14, '1873 Cattleman Revolver', 'We take a look at single-action 45 Colt revolvers from Colt, Ruger, and Uberti to find the best choice for cowboy action shooting, recreation, hunting, and personal defense.', 13, 2, 4, 1, 1, 800, 40, '2024-09-16 19:44:31', 1, 1, 4, 3),
-	(15, 'Springfield Hellion 20', 'The Springfield Hellion is based on the proven Croation HS Prudukt VHS-2 rifle, and was introduced to in the U.S. with a 16-inch barrel to keep it as short as possible while still being ATF legal. The newly released 20-inch Hellion is a close copy, albeit semi-auto, of the Croation military s VHS-D2 rifle configuration, which sports a longer 19.68 inch (500mm) barrel, a bayonet lug, and barrel ribs to help manage heat.  In fact, the commercial 20-inch Hellion barrel also measured 500mm, bolt face to crown, but we ll round that up to 20 inches to make it simple. So, other than a full-auto trigger pack and some cosmetic differences, this is as close as you will get to a correct VHS-D2.', 2, 5, 1, 4, 1, 20500, 50, '2024-09-16 20:07:55', 1, 1, 3, 1),
-	(16, 'M&P 15 Sport III Series', 'Built to perform under various conditions, the M&P SPORT III rifle is as versatile as it is reliable. Engineered for a wide variety of recreation, sport shooting, and professional applications, the new SPORT III offers more options to accessorize than the previous generations. Lightweight and rugged, the SPORT III embodies the best combination of function and form.\r\nFeaturing a forged, integral trigger guard, Armornite finish on the barrel, chromed firing pin, forward assist, and dust cover. Get unmatched value with the new M&P SPORT III.', 23, 8, 3, 6, 1, 1200, 100, '2024-09-16 20:14:23', 1, 1, 1, 1);
+	(8, 'Moosberg Taurus 856 Special Revolver', 'The UL 856, by Taurus, is a six-shot, 2-inch barreled .38 Special that is just over 6.5 inches long and 1.41 inches wide. Before you think that seems to be a bit large for a concealed-carry gun, given today s micro semiauto s, the 856 is shorter than a lot of pistols that are considered concealable compacts. This includes the popular Smith & Wesson M&P9 M2.0 and SIG Sauer P320. (The UL 856 actually matches the P320 Compact in width.)', 21, 1, 5, 5, 1, 400, 97, '2024-09-12 19:16:00', 1, 1, 1, 3),
+	(9, 'Smith & Wesson SMG 76', 'This Smith and Wesson S&W 76 is a pre-1986 transferable machine gun and is in like new / excellent condition. The exterior shows minimal handling marks on the tube and frame. Inside, the firing pin is smooth and rounded, barrel is shinny and the rifling is sharp. The extractor is straight and sharp and the sear appears to be the correct angle with zero wear. Function tests work correct for safe, semi and full auto use.', 22, 8, 2, 7, 1, 19000, 27, '2024-09-12 19:50:48', 1, 1, 3, 1),
+	(10, 'Smith & Wesson 350 Powerful', 'Winchester made the 350 Legend to be a saving grace for those who are restricted to straight-walled cartridges whilst hunting, which is why it flies off the shelves in states like Ohio and Indiana. Here in New York and most of Pennsylvania, we are free to hunt with whatever we wish, including handguns. In the dense woods that are native to these areas, handgun hunting is the way to go. With most shots being inside of 50 yards, there is no reason to bring a rifle into this.', 25, 9, 3, 6, 1, 1030, 90, '2024-09-14 12:47:48', 2, 1, 2, 1),
+	(11, 'Smith & Wesson Model 986', 'The 986 is an all-business, made-to-perform revolver that offered excellent accuracy with Hornady Critical Duty ammo. This highly modified L-frame had a smooth DA trigger due to the titanium cylinder. The SA trigger was crisp. We liked the large bold sights and full-size grip, which offered good recoil management. The 986 takes effort to conceal and carry.', 24, 1, 5, 6, 1, 1529, 44, '2024-09-16 01:19:47', 3, 1, 1, 2),
+	(12, 'Savage Arms Model 1907 ', 'Compact, all-metal guns designed for home defense, carry, and even military service at the beginning of the 20th century, the Savage Model 1907 and 1917 boasted some unique and forward-thinking design features for the day. Originally patented in November 1905, it would take almost 100 years for another semi-auto Savage pistol to roll off the assembly line when the Model 1917 ended production in 1928.', 13, 2, 3, 6, 1, 650, 22, '2024-09-16 19:02:50', 1, 1, 2, 4),
+	(13, 'HECKLER & KOCH MR27 ', 'The program called for a magazine-fed 5.56 mm automatic rifle designed to be operated by a single Marine and possessing greater accuracy, increased reliability, and lighter weight than the existing belt-fed 5.56 mm machine gun. These factors would enhance the automatic rifleman s maneuverability and speed to either augment and/or replace the belt-fed M249 Squad Automatic Weapon (SAW). As recent testing and operational deployment has confirmed, the IAR is more readily adapted for house-to-house clearing operations and day-to-day employment by the automatic rifleman when compared to an M249.', 26, 4, 2, 7, 1, 9000, 20, '2024-09-16 19:20:37', 1, 1, 2, 1),
+	(14, '1873 Cattleman Revolver', 'We take a look at single-action 45 Colt revolvers from Colt, Ruger, and Uberti to find the best choice for cowboy action shooting, recreation, hunting, and personal defense.', 13, 2, 4, 1, 1, 800, 31, '2024-09-16 19:44:31', 1, 1, 4, 3),
+	(15, 'Springfield Hellion 20', 'The Springfield Hellion is based on the proven Croation HS Prudukt VHS-2 rifle, and was introduced to in the U.S. with a 16-inch barrel to keep it as short as possible while still being ATF legal. The newly released 20-inch Hellion is a close copy, albeit semi-auto, of the Croation military s VHS-D2 rifle configuration, which sports a longer 19.68 inch (500mm) barrel, a bayonet lug, and barrel ribs to help manage heat.  In fact, the commercial 20-inch Hellion barrel also measured 500mm, bolt face to crown, but we ll round that up to 20 inches to make it simple. So, other than a full-auto trigger pack and some cosmetic differences, this is as close as you will get to a correct VHS-D2.', 2, 5, 1, 4, 1, 20500, 47, '2024-09-16 20:07:55', 1, 1, 3, 1),
+	(16, 'M&P 15 Sport III Series', 'Built to perform under various conditions, the M&P SPORT III rifle is as versatile as it is reliable. Engineered for a wide variety of recreation, sport shooting, and professional applications, the new SPORT III offers more options to accessorize than the previous generations. Lightweight and rugged, the SPORT III embodies the best combination of function and form.\r\nFeaturing a forged, integral trigger guard, Armornite finish on the barrel, chromed firing pin, forward assist, and dust cover. Get unmatched value with the new M&P SPORT III.', 23, 8, 3, 6, 1, 1200, 95, '2024-09-16 20:14:23', 1, 1, 1, 1),
+	(18, 'Savage Arms Sport 64 F Blue', 'Ten rounds have never been so much fun. The 64 F combines Savage s legendary accuracy with a reliable straight-blowback semi-automatic action fed by a detachable 10-round box magazine. The 21-inch, blued-satin carbon steel barrel is perfectly balanced to the rugged synthetic stock. ', 15, 3, 2, 7, 1, 100, 35, '2024-09-18 01:10:05', 1, 1, 4, 5),
+	(19, 'Savage Arms 64F Sports Purple', 'Ten rounds have never been so much fun. The 64 F combines Savage s legendary accuracy with a reliable straight-blowback semi-automatic action fed by a detachable 10-round box magazine. The 21-inch, blued-satin carbon steel barrel is perfectly balanced to the rugged synthetic stock. ', 15, 3, 2, 7, 1, 150, 50, '2024-09-18 01:13:50', 1, 1, 4, 5),
+	(20, 'Ruger LCP White Pocket Handgun', 'Model:	3741 <br/>\r\nCaliber:	380 Auto <br/>\r\nCapacity : 6+1  <br/>\r\nBarrel Length: 2.75 inches <br/>\r\nSights:	Integral <br/>\r\nAvailability:	Limited Availability ', 11, 6, 6, 2, 1, 120, 100, '2024-09-18 01:17:15', 1, 1, 5, 4),
+	(21, 'Springfield Pocket Hand Pistol', 'Springfield Armory recently unveiled its newest compact pistol designed for concealed carry.<br/><br/>\r\n\r\nSpringfield Armory s 911 .380 is the perfect pistol for your everyday carry, according to a recent press release <br/><br/>\r\nMany pocket guns can be hard to handle and unpleasant to shoot, discouraging practice at the range and time on the hip. However, the 911 .380 both shoots and feels like a full-size firearm, encouraging both practice and daily carry in the most concealable firearm that Springfield currently offers.<br/><br/>\r\n\r\nThe lightweight 7075 T6 aluminum frame and black Nitride or stainless 416 steel slide measure 5.5 inches long and less than 4 inches high, with a snag-free profile that s undetectable under clothing, according to the press release. ', 5, 2, 3, 1, 1, 79, 200, '2024-09-18 01:22:15', 1, 1, 5, 2);
 
 -- Dumping structure for table battlehell.puchase
 CREATE TABLE IF NOT EXISTS `puchase` (
@@ -391,13 +394,12 @@ CREATE TABLE IF NOT EXISTS `puchase` (
   KEY `fk_puchase_address1_idx` (`address_id`),
   CONSTRAINT `fk_puchase_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
   CONSTRAINT `fk_puchase_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.puchase: ~1 rows (approximately)
+-- Dumping data for table battlehell.puchase: ~12 rows (approximately)
 REPLACE INTO `puchase` (`id`, `datetime`, `user_id`, `address_id`) VALUES
-	(2, '2024-09-11 21:45:26', 1, 1),
-	(3, '2024-09-14 12:41:38', 2, 5),
-	(4, '2024-09-16 01:14:02', 3, 6);
+	(26, '2024-09-17 23:51:51', 1, 4),
+	(27, '2024-09-18 00:03:26', 1, 4);
 
 -- Dumping structure for table battlehell.purchase_items
 CREATE TABLE IF NOT EXISTS `purchase_items` (
@@ -413,16 +415,12 @@ CREATE TABLE IF NOT EXISTS `purchase_items` (
   CONSTRAINT `fk_purchase_items_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_purchase_items_puchase1` FOREIGN KEY (`puchase_id`) REFERENCES `puchase` (`id`),
   CONSTRAINT `fk_purchase_items_purchase_status1` FOREIGN KEY (`purchase_status_id`) REFERENCES `purchase_status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb3;
 
--- Dumping data for table battlehell.purchase_items: ~6 rows (approximately)
+-- Dumping data for table battlehell.purchase_items: ~25 rows (approximately)
 REPLACE INTO `purchase_items` (`id`, `qty`, `puchase_id`, `product_id`, `purchase_status_id`) VALUES
-	(1, 10, 2, 2, 1),
-	(2, 9, 2, 1, 3),
-	(3, 1, 3, 4, 1),
-	(4, 1, 3, 9, 1),
-	(5, 1, 4, 8, 1),
-	(6, 1, 4, 7, 1);
+	(50, 1, 26, 10, 1),
+	(51, 1, 27, 13, 1);
 
 -- Dumping structure for table battlehell.purchase_status
 CREATE TABLE IF NOT EXISTS `purchase_status` (
