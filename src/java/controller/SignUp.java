@@ -36,7 +36,7 @@ public class SignUp extends HttpServlet {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 
         //MAP REQUEST PARAMETER TO USER_DTO CLASS
-        User_DTO userDTO = gson.fromJson(req.getReader(), User_DTO.class);
+       final User_DTO userDTO = gson.fromJson(req.getReader(), User_DTO.class);
 
         //VALIDATE PARAMETERS
         if (userDTO.getFirst_name().isEmpty()) {
@@ -88,7 +88,7 @@ public class SignUp extends HttpServlet {
                 user.setPassword(userDTO.getPassword());
                 user.setVerification(String.valueOf(code));
 
-                String content = "<html lang=\"en\">\n"
+               final String content = "<html lang=\"en\">\n"
                         + "<head>\n"
                         + "    <meta charset=\"UTF-8\">\n"
                         + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
