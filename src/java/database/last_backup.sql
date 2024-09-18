@@ -133,9 +133,15 @@ CREATE TABLE IF NOT EXISTS `cart` (
   KEY `fk_cart_product1_idx` (`product_id`),
   CONSTRAINT `fk_cart_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_cart_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.cart: ~10 rows (approximately)
+REPLACE INTO `cart` (`id`, `qty`, `user_id`, `product_id`) VALUES
+	(78, 1, 1, 21),
+	(79, 1, 1, 20),
+	(80, 1, 1, 2),
+	(81, 1, 1, 1),
+	(82, 1, 1, 19);
 
 -- Dumping structure for table battlehell.city
 CREATE TABLE IF NOT EXISTS `city` (
@@ -264,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `model` (
   PRIMARY KEY (`id`),
   KEY `fk_model_brand_idx` (`brand_id`),
   CONSTRAINT `fk_model_brand` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.model: ~21 rows (approximately)
 REPLACE INTO `model` (`id`, `name`, `brand_id`) VALUES
@@ -293,7 +299,8 @@ REPLACE INTO `model` (`id`, `name`, `brand_id`) VALUES
 	(23, 'Mp15pc', 2),
 	(24, 'Revolver 986', 2),
 	(25, 'Revolver 350', 2),
-	(26, 'MR27', 10);
+	(26, 'MR27', 10),
+	(27, 'HTA 90-22', 3);
 
 -- Dumping structure for table battlehell.muzzle
 CREATE TABLE IF NOT EXISTS `muzzle` (
@@ -358,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   CONSTRAINT `fk_product_person1` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`),
   CONSTRAINT `fk_product_status1` FOREIGN KEY (`status_id`) REFERENCES `gun_status` (`id`),
   CONSTRAINT `fk_product_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.product: ~16 rows (approximately)
 REPLACE INTO `product` (`id`, `title`, `description`, `model_id`, `stock_id`, `barrel_id`, `action_id`, `bullet_type_id`, `price`, `qty`, `reg_date`, `user_id`, `status_id`, `person_id`, `gun_condition_id`) VALUES
@@ -375,13 +382,14 @@ REPLACE INTO `product` (`id`, `title`, `description`, `model_id`, `stock_id`, `b
 	(11, 'Smith & Wesson Model 986', 'The 986 is an all-business, made-to-perform revolver that offered excellent accuracy with Hornady Critical Duty ammo. This highly modified L-frame had a smooth DA trigger due to the titanium cylinder. The SA trigger was crisp. We liked the large bold sights and full-size grip, which offered good recoil management. The 986 takes effort to conceal and carry.', 24, 1, 5, 6, 1, 1529, 44, '2024-09-16 01:19:47', 3, 1, 1, 2),
 	(12, 'Savage Arms Model 1907 ', 'Compact, all-metal guns designed for home defense, carry, and even military service at the beginning of the 20th century, the Savage Model 1907 and 1917 boasted some unique and forward-thinking design features for the day. Originally patented in November 1905, it would take almost 100 years for another semi-auto Savage pistol to roll off the assembly line when the Model 1917 ended production in 1928.', 13, 2, 3, 6, 1, 650, 22, '2024-09-16 19:02:50', 1, 1, 2, 4),
 	(13, 'HECKLER & KOCH MR27 ', 'The program called for a magazine-fed 5.56 mm automatic rifle designed to be operated by a single Marine and possessing greater accuracy, increased reliability, and lighter weight than the existing belt-fed 5.56 mm machine gun. These factors would enhance the automatic rifleman s maneuverability and speed to either augment and/or replace the belt-fed M249 Squad Automatic Weapon (SAW). As recent testing and operational deployment has confirmed, the IAR is more readily adapted for house-to-house clearing operations and day-to-day employment by the automatic rifleman when compared to an M249.', 26, 4, 2, 7, 1, 9000, 20, '2024-09-16 19:20:37', 1, 1, 2, 1),
-	(14, '1873 Cattleman Revolver', 'We take a look at single-action 45 Colt revolvers from Colt, Ruger, and Uberti to find the best choice for cowboy action shooting, recreation, hunting, and personal defense.', 13, 2, 4, 1, 1, 800, 31, '2024-09-16 19:44:31', 1, 1, 4, 3),
+	(14, '1873 Cattleman Revolver', 'We take a look at single-action 45 Colt revolvers from Colt, Ruger, and Uberti to find the best choice for cowboy action shooting, recreation, hunting, and personal defense.', 13, 2, 4, 1, 1, 800, 30, '2024-09-16 19:44:31', 1, 1, 4, 3),
 	(15, 'Springfield Hellion 20', 'The Springfield Hellion is based on the proven Croation HS Prudukt VHS-2 rifle, and was introduced to in the U.S. with a 16-inch barrel to keep it as short as possible while still being ATF legal. The newly released 20-inch Hellion is a close copy, albeit semi-auto, of the Croation military s VHS-D2 rifle configuration, which sports a longer 19.68 inch (500mm) barrel, a bayonet lug, and barrel ribs to help manage heat.  In fact, the commercial 20-inch Hellion barrel also measured 500mm, bolt face to crown, but we ll round that up to 20 inches to make it simple. So, other than a full-auto trigger pack and some cosmetic differences, this is as close as you will get to a correct VHS-D2.', 2, 5, 1, 4, 1, 20500, 47, '2024-09-16 20:07:55', 1, 1, 3, 1),
 	(16, 'M&P 15 Sport III Series', 'Built to perform under various conditions, the M&P SPORT III rifle is as versatile as it is reliable. Engineered for a wide variety of recreation, sport shooting, and professional applications, the new SPORT III offers more options to accessorize than the previous generations. Lightweight and rugged, the SPORT III embodies the best combination of function and form.\r\nFeaturing a forged, integral trigger guard, Armornite finish on the barrel, chromed firing pin, forward assist, and dust cover. Get unmatched value with the new M&P SPORT III.', 23, 8, 3, 6, 1, 1200, 95, '2024-09-16 20:14:23', 1, 1, 1, 1),
-	(18, 'Savage Arms Sport 64 F Blue', 'Ten rounds have never been so much fun. The 64 F combines Savage s legendary accuracy with a reliable straight-blowback semi-automatic action fed by a detachable 10-round box magazine. The 21-inch, blued-satin carbon steel barrel is perfectly balanced to the rugged synthetic stock. ', 15, 3, 2, 7, 1, 100, 35, '2024-09-18 01:10:05', 1, 1, 4, 5),
+	(18, 'Savage Arms Sport 64 F Blue', 'Ten rounds have never been so much fun. The 64 F combines Savage s legendary accuracy with a reliable straight-blowback semi-automatic action fed by a detachable 10-round box magazine. The 21-inch, blued-satin carbon steel barrel is perfectly balanced to the rugged synthetic stock. ', 15, 3, 2, 7, 1, 100, 34, '2024-09-18 01:10:05', 1, 1, 4, 5),
 	(19, 'Savage Arms 64F Sports Purple', 'Ten rounds have never been so much fun. The 64 F combines Savage s legendary accuracy with a reliable straight-blowback semi-automatic action fed by a detachable 10-round box magazine. The 21-inch, blued-satin carbon steel barrel is perfectly balanced to the rugged synthetic stock. ', 15, 3, 2, 7, 1, 150, 50, '2024-09-18 01:13:50', 1, 1, 4, 5),
 	(20, 'Ruger LCP White Pocket Handgun', 'Model:	3741 <br/>\r\nCaliber:	380 Auto <br/>\r\nCapacity : 6+1  <br/>\r\nBarrel Length: 2.75 inches <br/>\r\nSights:	Integral <br/>\r\nAvailability:	Limited Availability ', 11, 6, 6, 2, 1, 120, 100, '2024-09-18 01:17:15', 1, 1, 5, 4),
-	(21, 'Springfield Pocket Hand Pistol', 'Springfield Armory recently unveiled its newest compact pistol designed for concealed carry.<br/><br/>\r\n\r\nSpringfield Armory s 911 .380 is the perfect pistol for your everyday carry, according to a recent press release <br/><br/>\r\nMany pocket guns can be hard to handle and unpleasant to shoot, discouraging practice at the range and time on the hip. However, the 911 .380 both shoots and feels like a full-size firearm, encouraging both practice and daily carry in the most concealable firearm that Springfield currently offers.<br/><br/>\r\n\r\nThe lightweight 7075 T6 aluminum frame and black Nitride or stainless 416 steel slide measure 5.5 inches long and less than 4 inches high, with a snag-free profile that s undetectable under clothing, according to the press release. ', 5, 2, 3, 1, 1, 79, 200, '2024-09-18 01:22:15', 1, 1, 5, 2);
+	(21, 'Springfield Pocket Hand Pistol', 'Springfield Armory recently unveiled its newest compact pistol designed for concealed carry.<br/><br/>\r\n\r\nSpringfield Armory s 911 .380 is the perfect pistol for your everyday carry, according to a recent press release <br/><br/>\r\nMany pocket guns can be hard to handle and unpleasant to shoot, discouraging practice at the range and time on the hip. However, the 911 .380 both shoots and feels like a full-size firearm, encouraging both practice and daily carry in the most concealable firearm that Springfield currently offers.<br/><br/>\r\n\r\nThe lightweight 7075 T6 aluminum frame and black Nitride or stainless 416 steel slide measure 5.5 inches long and less than 4 inches high, with a snag-free profile that s undetectable under clothing, according to the press release. ', 5, 2, 3, 1, 1, 79, 199, '2024-09-18 01:22:15', 1, 1, 5, 2),
+	(22, 'HTA 90 22 White Rifle', 'Fully licensed FN Herstal trademarks with individualized laser engraved serial number <br/>\r\nKrytac Low Profile Modular Aluminum upper receiver assembly with optic rail. High quality injection molded reinforced polymer frame <br/>\r\nUltra-light weight, compact, and maneuverable. Ergonomic design makes the weapon incredibly comfortable to shoulder and fire <br/>\r\nBullpup design allows for a longer inner barrel to improve accuracy and range <br/>\r\nFully ambidextrous controls allow the weapon to be operated by either left or right handed users without reconfiguration or modification <br/>\r\nTwo-stage trigger when in full-auto mode pulling the trigger back half way fires a shot in semi-auto, a full trigger pull fires gun in full-auto <br/>\r\nEnlarged hop-up door can be accessed by pulling the charging handle to the rear, revealing a rotary hop-up <br/>\r\n200rd to 50rd convertible magazine with last-round BB follower, Magazine cut-off makes gun cease firing when magazine is emptied <br/><br/>\r\n\r\n<b> The EMG Custom Edition Alpine White P90 Agency Package</b> comes with Krytacs latest Modular Receiver Set pre-installed as well as the standard P90 upper receiver allowing for two standalone configurations that can be easily swapped to suit the users needs. The Modular Receiver set features a shorter profile than the standard P90 upper receiver as well as an extended barrel for improved range and accuracy along with an extended M-LOK compatible handguard shroud. This shorter profile Modular Receiver sets the top Picatinny rail closer to your bore axis to allow for better compatibility of aftermarket optics without greatly increasing your height over bore. <br/><br/>\r\n\r\nLength: 560mm <br/>\r\nWeight: 2360g <br/>\r\nInner Barrel: 290mm <br/>\r\nMagazine Capacity: 200/50rd Mid-to-Standard Capacity. Compatible with Tokyo Marui P90 Magazines. A guide will be released soon for compatibility with CYMA P90 magazines. <br/>\r\nRounds Per Second: 20 RPS, Tested with an 11.1v Battery at 20c <br/>\r\nThread Direction: 14mm Negative <br/>\r\nGearbox: Krytac P90 Gearbox, Upgradeability to be determined <br/>\r\nMotor: Long Type <br/>\r\nFire Modes: Semi/Full-Auto, Safety <br/>\r\nBattery: 11.1v or 7.4v 1000mAh PEQ type LiPo recommended (Wired to the rear with a Deans connector) <br/> <br/> \r\n(NOTE: Battery output rating should not exceed 30 amps) <br/>\r\nHopup: Yes, Adjustable <br/>\r\nPackage Includes: Gun, Magazine, Spare Upper Receiver, Battery Housing Extension Assembly, Manual <br/>\r\n\r\nFPS Range: 330-350 (with 6mm .20g BB) <br/>\r\n', 27, 8, 3, 7, 1, 2000, 52, '2024-09-18 16:23:40', 3, 1, 1, 3);
 
 -- Dumping structure for table battlehell.puchase
 CREATE TABLE IF NOT EXISTS `puchase` (
@@ -394,12 +402,13 @@ CREATE TABLE IF NOT EXISTS `puchase` (
   KEY `fk_puchase_address1_idx` (`address_id`),
   CONSTRAINT `fk_puchase_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
   CONSTRAINT `fk_puchase_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.puchase: ~12 rows (approximately)
 REPLACE INTO `puchase` (`id`, `datetime`, `user_id`, `address_id`) VALUES
 	(26, '2024-09-17 23:51:51', 1, 4),
-	(27, '2024-09-18 00:03:26', 1, 4);
+	(27, '2024-09-18 00:03:26', 1, 4),
+	(28, '2024-09-18 16:12:37', 3, 6);
 
 -- Dumping structure for table battlehell.purchase_items
 CREATE TABLE IF NOT EXISTS `purchase_items` (
@@ -415,12 +424,15 @@ CREATE TABLE IF NOT EXISTS `purchase_items` (
   CONSTRAINT `fk_purchase_items_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_purchase_items_puchase1` FOREIGN KEY (`puchase_id`) REFERENCES `puchase` (`id`),
   CONSTRAINT `fk_purchase_items_purchase_status1` FOREIGN KEY (`purchase_status_id`) REFERENCES `purchase_status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.purchase_items: ~25 rows (approximately)
 REPLACE INTO `purchase_items` (`id`, `qty`, `puchase_id`, `product_id`, `purchase_status_id`) VALUES
 	(50, 1, 26, 10, 1),
-	(51, 1, 27, 13, 1);
+	(51, 1, 27, 13, 1),
+	(52, 1, 28, 21, 1),
+	(53, 1, 28, 18, 1),
+	(54, 1, 28, 14, 1);
 
 -- Dumping structure for table battlehell.purchase_status
 CREATE TABLE IF NOT EXISTS `purchase_status` (
@@ -471,13 +483,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(30) NOT NULL,
   `verification` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.user: ~0 rows (approximately)
 REPLACE INTO `user` (`id`, `email`, `first_name`, `last_name`, `password`, `verification`) VALUES
 	(1, 'tharinduchanaka6@gmail.com', 'Tharindu', 'Chanaka', 'tharinduCHA@8754', 'Verified'),
 	(2, 'johnwick2024@gmail.com', 'John', 'Wick', 'johnwick@2024Gun', 'Verified'),
-	(3, 'kalhara139@gmail.com', 'Geeth', 'Kalhara', 'geethKALHARA@24', 'Verified');
+	(3, 'kalhara139@gmail.com', 'Geeth', 'Kalhara', 'geethKALHARA@24', 'Verified'),
+	(4, 'chanakaelectro@gmail.com', 'Chanaka', 'Sanjeewa', 'chanakElect@345', 'Verified');
 
 -- Dumping structure for table battlehell.wishlist
 CREATE TABLE IF NOT EXISTS `wishlist` (
@@ -489,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `wishlist` (
   KEY `fk_wishlist_user1_idx` (`user_id`),
   CONSTRAINT `fk_wishlist_product1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   CONSTRAINT `fk_wishlist_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb3;
 
 -- Dumping data for table battlehell.wishlist: ~17 rows (approximately)
 REPLACE INTO `wishlist` (`id`, `product_id`, `user_id`) VALUES
@@ -509,7 +522,11 @@ REPLACE INTO `wishlist` (`id`, `product_id`, `user_id`) VALUES
 	(66, 11, 3),
 	(67, 9, 3),
 	(68, 8, 3),
-	(69, 3, 3);
+	(69, 3, 3),
+	(70, 19, 1),
+	(71, 18, 1),
+	(72, 19, 3),
+	(73, 18, 3);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
